@@ -15,8 +15,9 @@ namespace C971_PA.Droid
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);            
+            string dbPath = FileAccessHelper.GetLocalFilePath("c971.db3");
+            LoadApplication(new App(dbPath));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
