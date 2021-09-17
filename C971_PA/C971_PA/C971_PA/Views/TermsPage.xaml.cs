@@ -18,7 +18,24 @@ namespace C971_PA.Views
         {
             InitializeComponent();
 
-            BindingContext = new Instructor();
+            //BindingContext = new Term();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            termsCollectionView.ItemsSource = await App.DataBase.GetAllTermsAsync();
+        }
+
+        async void OnNewClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new AddTermPage());
+        }
+
+        async void OnSelectionChanged(object sender, SelectedItemChangedEventArgs args)
+        {
+            await Navigation.PushModalAsync(new TermDetailPage((Term)args.SelectedItem));
         }
     }
 }

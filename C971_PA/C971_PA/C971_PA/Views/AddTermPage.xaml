@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_PA.Views.AddTermPage"
+             Title="Add New Term">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     VerticalOptions="CenterAndExpand"
+                     Padding="10,10,10,10">
+            
+            <Entry x:Name="newTermName"
+                    Text="{Binding Name}"
+                    Placeholder="Name of New Term"
+                    HeightRequest="50"/>
+
+            <Grid>
+                <Label Text="Start Date"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <DatePicker Date="{Binding Start}"
+                            Grid.Column="1"
+                            Grid.Row="0"/>                
+
+                <Label Text="End Date"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <DatePicker Date="{Binding End}"
+                            Grid.Column="1"
+                            Grid.Row="1"/>
+            </Grid>
+            
+            <StackLayout Orientation="Horizontal">
+                
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+            </StackLayout>
+            
+            <Button Text="Add"
+                    Clicked="OnAddButtonClicked"/>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

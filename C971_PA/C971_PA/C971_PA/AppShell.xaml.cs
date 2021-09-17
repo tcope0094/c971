@@ -13,6 +13,8 @@ namespace C971_PA
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(TermsPage), typeof(TermsPage));
+            Routing.RegisterRoute(nameof(TermDetailPage), typeof(TermDetailPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
