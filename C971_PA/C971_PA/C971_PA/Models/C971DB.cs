@@ -58,6 +58,12 @@ namespace C971_PA.Models
             return _conn.Table<Course>().Where(c => c.TermID == term.TermKey).ToListAsync();            
         }
 
+        public async Task<int> RemoveCoursesFromTermAsync(Course course)
+        {
+            //course.TermID = null;
+            return await _conn.UpdateAsync(course);
+        }
+
 
 
         public void CreateTables()

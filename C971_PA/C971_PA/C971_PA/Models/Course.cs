@@ -15,7 +15,7 @@ namespace C971_PA.Models
         public string Name { get; set; }
         [MaxLength(1000), NotNull]
         public string Description { get; set; }
-        [MaxLength(250), NotNull]
+        [MaxLength(250)]
         public int TermID { get; set; }
         [MaxLength(250), NotNull]
         public int InstructorID { get; set; }

@@ -16,7 +16,6 @@ namespace C971_PA.Views
     public partial class TermDetailPage : ContentPage
     {
         int termKey;
-        List<Course> coursesToRemove;
 
         public TermDetailPage(int termKey)
         {
@@ -42,7 +41,6 @@ namespace C971_PA.Views
             {
                 removeButton.IsEnabled = false;
             }
-            coursesToRemove.Add((Course)args.SelectedItem);
         }
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
@@ -54,7 +52,10 @@ namespace C971_PA.Views
 
         public async void OnRemoveButtonClicked(object sender, EventArgs args)
         {
+            foreach (var item in termCoursesListView.SelectedItems)
+            {
 
+            }
         }
 
 
