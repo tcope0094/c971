@@ -25,7 +25,7 @@ namespace C971_PA.Views
         {
             base.OnAppearing();
 
-            termsCollectionView.ItemsSource = await App.DataBase.GetAllTermsAsync();
+            termsListView.ItemsSource = await App.DataBase.GetAllTermsAsync();
         }
 
         async void OnNewClicked(object sender, EventArgs args)
@@ -33,9 +33,19 @@ namespace C971_PA.Views
             await Navigation.PushModalAsync(new AddTermPage());
         }
 
-        async void OnSelectionChanged(object sender, SelectedItemChangedEventArgs args)
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            await Navigation.PushModalAsync(new TermDetailPage((Term)args.SelectedItem));
+            Term term = (Term)args.SelectedItem;
+            if (args.SelectedItem != null)
+            {
+                termsListView.SelectedItem = null;
+                await Navigation.PushModalAsync(new TermDetailPage(term.TermKey));
+            }
+        }
+
+        async void GoToDetailPage(Term term)
+        {
+            
         }
     }
 }

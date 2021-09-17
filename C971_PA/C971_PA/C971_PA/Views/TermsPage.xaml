@@ -10,11 +10,11 @@
     </ContentPage.ToolbarItems>
     
     
-    <CollectionView x:Name="termsCollectionView"
+    <ListView x:Name="termsListView"
                     SelectionMode="Single"                  
-                    SelectionChanged="OnSelectionChanged">
+                    ItemSelected="OnItemSelected">
         
-        <CollectionView.ItemTemplate>
+        <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell Height="30">
                     <StackLayout Padding="5">
@@ -23,6 +23,6 @@
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
