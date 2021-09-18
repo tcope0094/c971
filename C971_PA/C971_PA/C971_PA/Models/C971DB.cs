@@ -60,7 +60,7 @@ namespace C971_PA.Models
 
         public async Task<int> RemoveCoursesFromTermAsync(Course course)
         {
-            //course.TermID = null;
+            course.TermID = null;
             return await _conn.UpdateAsync(course);
         }
 

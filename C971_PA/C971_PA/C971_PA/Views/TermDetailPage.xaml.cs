@@ -54,7 +54,7 @@ namespace C971_PA.Views
         {
             foreach (var item in termCoursesListView.SelectedItems)
             {
-
+                App.DataBase.RemoveCoursesFromTermAsync((Course)item);
             }
         }
 
