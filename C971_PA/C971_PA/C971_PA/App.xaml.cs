@@ -1,5 +1,4 @@
-﻿using C971_PA.Services;
-using C971_PA.Views;
+﻿using C971_PA.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

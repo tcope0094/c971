@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.TermDetailPage">
-    <ContentPage.Content>
+             x:Class="C971_PA.Views.TermDetailPage"
+             Title="Term Details">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit"/>
+    </ContentPage.ToolbarItems>
+    
+    
 
-        <ContentPage.ToolbarItems>
-            <ToolbarItem Text="Edit"
-                     Clicked="OnEditClicked"/>
-        </ContentPage.ToolbarItems>
-
-        <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Vertical">
         
-            <Entry Text="{Binding Name}"/>
+        <Entry Text="{Binding Name}"/>
             
-            <DatePicker Date="{Binding Start}"/>
+        <DatePicker Date="{Binding Start}"/>
             
-            <DatePicker Date="{Binding End}"/>
+        <DatePicker Date="{Binding End}"/>
             
-            <Button Text="Save"
-                    Clicked="OnSaveButtonClicked"/>
+        <Button Text="Save"
+                Clicked="OnSaveButtonClicked"/>
             
 
             
-            <CollectionView x:Name="termCoursesListView"
-                            SelectionMode="Multiple"
-                            SelectionChanged="OnSelectedItemChanged">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="5">
-                            <Label Text="{Binding Name}" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button Text="Remove"
-                    x:Name="removeButton"
-                    IsEnabled="False"
-                    Clicked="OnRemoveButtonClicked"/>
+        <CollectionView x:Name="termCoursesListView"
+                        SelectionMode="Multiple"
+                        SelectionChanged="OnSelectedItemChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="5">
+                        <Label Text="{Binding Name}" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Remove"
+                x:Name="removeButton"
+                IsEnabled="False"
+                Clicked="OnRemoveButtonClicked"/>
             
-        </StackLayout>
+    </StackLayout>
         
-    </ContentPage.Content>
 </ContentPage>

@@ -60,6 +60,11 @@ namespace C971_PA.Views
             termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
         }
 
+        public async void OnEditClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new TermEditPage((Term)this.BindingContext));
+        }
+
 
     }
 }

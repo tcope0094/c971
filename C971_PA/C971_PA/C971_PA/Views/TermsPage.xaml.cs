@@ -39,7 +39,7 @@ namespace C971_PA.Views
             if (args.SelectedItem != null)
             {
                 termsListView.SelectedItem = null;
-                await Navigation.PushModalAsync(new TermDetailPage(term.TermKey));
+                await Navigation.PushAsync(new TermDetailPage(term.TermKey));
             }
         }
 

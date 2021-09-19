@@ -1,5 +1,4 @@
-﻿using C971_PA.ViewModels;
-using C971_PA.Views;
+﻿using C971_PA.Views;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -11,8 +10,6 @@ namespace C971_PA
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(TermsPage), typeof(TermsPage));
             Routing.RegisterRoute(nameof(TermDetailPage), typeof(TermDetailPage));
         }
