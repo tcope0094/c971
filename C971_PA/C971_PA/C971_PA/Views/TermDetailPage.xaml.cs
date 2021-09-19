@@ -31,8 +31,9 @@ namespace C971_PA.Views
             termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext); 
         }
 
-        public async void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
+        public void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
         {
+            int a = termCoursesListView.SelectedItems.Count;
             if (termCoursesListView.SelectedItems.Count > 0)
             {
                 removeButton.IsEnabled = true;
@@ -54,8 +55,9 @@ namespace C971_PA.Views
         {
             foreach (var item in termCoursesListView.SelectedItems)
             {
-                App.DataBase.RemoveCoursesFromTermAsync((Course)item);
+                await App.DataBase.RemoveCoursesFromTermAsync((Course)item);
             }
+            termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
         }
 
 

@@ -72,6 +72,7 @@ namespace C971_PA.Models
             _conn.CreateTableAsync<Course>().Wait();
             _conn.CreateTableAsync<Assessment>().Wait();
             _conn.CreateTableAsync<Instructor>().Wait();
+            
         }
         public void CreateInitialData()
         {
@@ -435,10 +436,14 @@ namespace C971_PA.Models
         }
         public void ClearAllTables()
         {
-            _conn.DeleteAllAsync<Instructor>().Wait();
-            _conn.DeleteAllAsync<Assessment>().Wait();
-            _conn.DeleteAllAsync<Term>().Wait();
-            _conn.DeleteAllAsync<Course>().Wait();
+            //    _conn.DeleteAllAsync<Instructor>().Wait();
+            //    _conn.DeleteAllAsync<Assessment>().Wait();
+            //    _conn.DeleteAllAsync<Term>().Wait();
+            //    _conn.DeleteAllAsync<Course>().Wait();
+            _conn.DropTableAsync<Term>().Wait();
+            _conn.DropTableAsync<Course>().Wait();
+            _conn.DropTableAsync<Assessment>().Wait();
+            _conn.DropTableAsync<Instructor>().Wait();
         }
 
     }

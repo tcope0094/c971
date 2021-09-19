@@ -3,7 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="C971_PA.Views.TermDetailPage">
     <ContentPage.Content>
-        
+
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Edit"
+                     Clicked="OnEditClicked"/>
+        </ContentPage.ToolbarItems>
+
         <StackLayout Orientation="Vertical">
         
             <Entry Text="{Binding Name}"/>
@@ -18,7 +23,8 @@
 
             
             <CollectionView x:Name="termCoursesListView"
-                            SelectionMode="Multiple">
+                            SelectionMode="Multiple"
+                            SelectionChanged="OnSelectedItemChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Padding="5">
