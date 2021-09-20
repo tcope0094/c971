@@ -7,38 +7,70 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit"/>
     </ContentPage.ToolbarItems>
-    
-    
 
-    <StackLayout Orientation="Vertical">
-        
-        <Entry Text="{Binding Name}"/>
-            
-        <DatePicker Date="{Binding Start}"/>
-            
-        <DatePicker Date="{Binding End}"/>
-            
-        <Button Text="Save"
-                Clicked="OnSaveButtonClicked"/>
-            
 
-            
-        <CollectionView x:Name="termCoursesListView"
-                        SelectionMode="Multiple"
+
+
+
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="CenterAndExpand">
+
+
+        <Grid
+            Padding="10,25,10,50"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">
+            <Label Text="Term Name:"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+            <Label Text="{Binding Name}"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+            <Label Text="Term Start:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+            <Label Text="{Binding Start}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+
+            <Label Text="Term End: "
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+            <Label Text="{Binding End}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+        </Grid>
+
+        <Label Text="Courses in Term:"
+               Padding="10"
+               FontSize="Large"/>
+
+        <CollectionView x:Name="termCoursesListView"                        
+                        SelectionMode="Single"
                         SelectionChanged="OnSelectedItemChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="5">
-                        <Label Text="{Binding Name}" />
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Name}"
+                               FontSize="Medium"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text="Remove"
-                x:Name="removeButton"
-                IsEnabled="False"
-                Clicked="OnRemoveButtonClicked"/>
-            
     </StackLayout>
         
 </ContentPage>

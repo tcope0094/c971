@@ -18,5 +18,17 @@ namespace C971_PA.Views
         {
             InitializeComponent();
         }
+        public void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
+        {
+            //int a = termCoursesListView.SelectedItems.Count;
+            //if (termCoursesListView.SelectedItems.Count > 0)
+            //{
+            //    removeButton.IsEnabled = true;
+            //}
+            //else
+            //{
+            //    removeButton.IsEnabled = false;
+            //}
+        }
     }
 }

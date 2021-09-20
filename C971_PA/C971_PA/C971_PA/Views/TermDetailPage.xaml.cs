@@ -31,17 +31,10 @@ namespace C971_PA.Views
             termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext); 
         }
 
-        public void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
+        public async void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
         {
-            int a = termCoursesListView.SelectedItems.Count;
-            if (termCoursesListView.SelectedItems.Count > 0)
-            {
-                removeButton.IsEnabled = true;
-            }
-            else
-            {
-                removeButton.IsEnabled = false;
-            }
+            //await Navigation.PushModalAsync(new CourseDetailPage((Course)args.SelectedItem));
+            await Navigation.PushAsync(new TermEditPage((Term)this.BindingContext));
         }
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
