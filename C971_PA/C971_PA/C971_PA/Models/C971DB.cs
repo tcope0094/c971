@@ -53,9 +53,9 @@ namespace C971_PA.Models
             return await _conn.UpdateAsync(term);
         }
 
-        public Task<List<Course>> GetCoursesInTermAsync(Term term)
+        public async Task<List<Course>> GetCoursesInTermAsync(Term term)
         {
-            return _conn.Table<Course>().Where(c => c.TermID == term.TermKey).ToListAsync();            
+            return await _conn.Table<Course>().Where(c => c.TermID == term.TermKey).ToListAsync();            
         }
 
         public async Task<int> RemoveCoursesFromTermAsync(Course course)

@@ -28,6 +28,7 @@ namespace C971_PA.Views
             base.OnAppearing();
 
             this.BindingContext = await App.DataBase.GetTermAsync(termKey);
+            var temp = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
             termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext); 
         }
 
