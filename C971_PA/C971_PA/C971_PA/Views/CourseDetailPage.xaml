@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_PA.Views.CourseDetailPage"
+             Title="{Binding Name}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid
+            Padding="10,25,10,50"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">                
+
+                <Label Text="Course Status:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Status}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Start:"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Start}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+
+                <Label Text="End: "
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Label Text="{Binding End}"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Due Date: "
+                       Grid.Column="0"
+                       Grid.Row="4"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Label Text="{Binding DueDate}"
+                       Grid.Column="1"
+                       Grid.Row="4"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+            </Grid>
+            <Grid x:Name="instructorGrid">
+
+                <Label Text="Instructor Name: "
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Name}"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Phone: "
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Phone}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Email: "
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Email}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+            </Grid>
+            <Label Text="Notes:"/>
+            <Editor Text="{Binding Notes}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

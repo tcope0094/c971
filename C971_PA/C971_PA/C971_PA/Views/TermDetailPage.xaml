@@ -59,18 +59,20 @@
                Padding="10"
                FontSize="Large"/>
 
-        <CollectionView x:Name="termCoursesListView"                        
+        <ListView x:Name="termCoursesListView"                        
                         SelectionMode="Single"
-                        SelectionChanged="OnSelectedItemChanged">
-            <CollectionView.ItemTemplate>
+                        ItemSelected="OnItemSelected">
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10">
-                        <Label Text="{Binding Name}"
-                               FontSize="Medium"/>
-                    </StackLayout>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Name}"
+                                   FontSize="Medium"/>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
         
 </ContentPage>

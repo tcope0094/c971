@@ -28,14 +28,17 @@ namespace C971_PA.Views
             base.OnAppearing();
 
             this.BindingContext = await App.DataBase.GetTermAsync(termKey);
-            var temp = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
-            termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext); 
+            var coursesInTerm = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
+            termCoursesListView.ItemsSource = coursesInTerm; 
         }
 
-        public async void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
+        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            //await Navigation.PushModalAsync(new CourseDetailPage((Course)args.SelectedItem));
-            await Navigation.PushAsync(new TermEditPage((Term)this.BindingContext));
+            Course course = (Course)args.SelectedItem;
+            if (course != null)
+            {
+                await Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
+            }
         }
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
@@ -45,14 +48,14 @@ namespace C971_PA.Views
             await Navigation.PopModalAsync();
         }
 
-        public async void OnRemoveButtonClicked(object sender, EventArgs args)
-        {
-            foreach (var item in termCoursesListView.SelectedItems)
-            {
-                await App.DataBase.RemoveCoursesFromTermAsync((Course)item);
-            }
-            termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
-        }
+        //public async void OnRemoveButtonClicked(object sender, EventArgs args)
+        //{
+        //    foreach (var item in termCoursesListView.SelectedItem)
+        //    {
+        //        await App.DataBase.RemoveCoursesFromTermAsync((Course)item);
+        //    }
+        //    termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
+        //}
 
         public async void OnEditClicked(object sender, EventArgs args)
         {

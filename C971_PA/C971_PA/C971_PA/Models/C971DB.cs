@@ -53,15 +53,25 @@ namespace C971_PA.Models
             return await _conn.UpdateAsync(term);
         }
 
-        public async Task<List<Course>> GetCoursesInTermAsync(Term term)
+        public  async Task<List<Course>> GetCoursesInTermAsync(Term term)
         {
-            return await _conn.Table<Course>().Where(c => c.TermID == term.TermKey).ToListAsync();            
+            return await _conn.Table<Course>().Where(c => c.TermID == term.TermKey).ToListAsync();  
         }
 
         public async Task<int> RemoveCoursesFromTermAsync(Course course)
         {
             course.TermID = null;
             return await _conn.UpdateAsync(course);
+        }
+
+        public async Task<Instructor> GetInstructorByCourseAsync(Course course)
+        {
+            return await _conn.Table<Instructor>().Where(i => i.InstructorKey == course.InstructorID).FirstOrDefaultAsync();
+        }
+
+        public async Task<Course> GetCourseAsync(int courseKey)
+        {
+            return await _conn.Table<Course>().Where(c => c.CourseKey == courseKey).FirstOrDefaultAsync();
         }
 
 

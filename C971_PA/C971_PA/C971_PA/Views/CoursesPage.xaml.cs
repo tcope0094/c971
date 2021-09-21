@@ -12,9 +12,9 @@ using C971_PA.Models;
 namespace C971_PA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TermsPage : ContentPage
+    public partial class CoursesPage : ContentPage
     {
-        public TermsPage()
+        public CoursesPage()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace C971_PA.Views
         {
             base.OnAppearing();
 
-            termsListView.ItemsSource = await App.DataBase.GetAllTermsAsync();
+            coursesListView.ItemsSource = await App.DataBase.GetAllCoursesAsync();
         }
 
         async void OnNewClicked(object sender, EventArgs args)
@@ -33,11 +33,11 @@ namespace C971_PA.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            Term term = (Term)args.SelectedItem;
+            Course course = (Course)args.SelectedItem;
             if (args.SelectedItem != null)
             {
-                termsListView.SelectedItem = null;
-                await Navigation.PushAsync(new TermDetailPage(term.TermKey));
+                coursesListView.SelectedItem = null;
+                await Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
             }
         }
     }
