@@ -76,6 +76,7 @@ namespace C971_PA.Models
 
 
 
+
         public void CreateTables()
         {
             _conn.CreateTableAsync<Term>().Wait();

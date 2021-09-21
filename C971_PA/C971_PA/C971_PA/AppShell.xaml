@@ -80,7 +80,7 @@
     -->
     <FlyoutItem Title="Terms" Icon="icon_feed.png">
         <ShellContent Route="TermsPage" ContentTemplate="{DataTemplate local:TermsPage}" />
-    </FlyoutItem>
+    </FlyoutItem>    
     <FlyoutItem Title="Courses" Icon="icon_feed.png">
         <ShellContent Route="CoursesPage" ContentTemplate="{DataTemplate local:CoursesPage}" />
     </FlyoutItem>

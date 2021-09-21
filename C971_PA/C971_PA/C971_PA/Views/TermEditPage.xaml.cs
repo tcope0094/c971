@@ -14,21 +14,22 @@ namespace C971_PA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TermEditPage : ContentPage
     {
+        Term term;
         public TermEditPage(Term term)
         {
             InitializeComponent();
+            this.term = term;
         }
-        public void OnSelectedItemChanged(object sender, SelectedItemChangedEventArgs args)
+
+        protected override void OnAppearing()
         {
-            //int a = termCoursesListView.SelectedItems.Count;
-            //if (termCoursesListView.SelectedItems.Count > 0)
-            //{
-            //    removeButton.IsEnabled = true;
-            //}
-            //else
-            //{
-            //    removeButton.IsEnabled = false;
-            //}
+            base.OnAppearing();
+
+            this.BindingContext = term;
+        }
+        public void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+                        
         }
     }
 }

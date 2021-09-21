@@ -16,6 +16,7 @@ namespace C971_PA.Views
     {
         Instructor instructor;
         int courseKey;
+        Course course;
         public CourseDetailPage(int courseKey)
         {
             InitializeComponent();
@@ -26,13 +27,17 @@ namespace C971_PA.Views
         {
             base.OnAppearing();
             this.BindingContext = await App.DataBase.GetCourseAsync(this.courseKey);
+            this.course = (Course)this.BindingContext;
             this.instructor = await App.DataBase.GetInstructorByCourseAsync((Course)this.BindingContext);
             instructorGrid.BindingContext = instructor;
+            courseStatusPicker.ItemsSource = Course.PossibleStatuses;
+            courseStatusPicker.SelectedItem = course.Status;
         }
 
-        protected override bool OnBackButtonPressed()
+        public async void OnEditClicked(object sender, EventArgs args)
         {
-            return true;
+            await Navigation.PushModalAsync(new CourseEditPage((Course)this.BindingContext));
         }
+
     }
 }
