@@ -18,7 +18,7 @@ namespace C971_PA.Views
         Term term;
         ObservableCollection<Course> coursesInTerm;
         ObservableCollection<Course> coursesNotInTerm;
-        List<Course> coursesToAdd;
+        ObservableCollection<Course> coursesToAdd;
         public bool IsRefreshing { get; set; }
         public TermEditPage(Term term)
         {
@@ -31,10 +31,15 @@ namespace C971_PA.Views
             base.OnAppearing();
 
             this.BindingContext = term;
+
             this.coursesInTerm = await App.DataBase.GetCoursesInTermAsync(this.term);
             termCoursesCollectionView.ItemsSource = coursesInTerm;
+
             this.coursesNotInTerm = await App.DataBase.GetCoursesNotInTermAsync(this.term);
             addCoursePicker.ItemsSource = coursesNotInTerm;
+
+            this.coursesToAdd = new ObservableCollection<Course>();
+            coursesToAddCollectionView.ItemsSource = this.coursesToAdd;
         }
         protected override bool OnBackButtonPressed()
         {
@@ -54,9 +59,14 @@ namespace C971_PA.Views
 
         public async void OnCoursePickerSelected(object sender, EventArgs args)
         {
-            coursesInTerm.Add((Course)addCoursePicker.SelectedItem);
+            coursesToAdd.Add((Course)addCoursePicker.SelectedItem);
             coursesNotInTerm.Remove((Course)addCoursePicker.SelectedItem);
+            addCoursePicker.SelectedItem = null;            
         }
 
+        public async void OnSaveButtonClicked(object sender, EventArgs args)
+        {
+
+        }
     }
 }

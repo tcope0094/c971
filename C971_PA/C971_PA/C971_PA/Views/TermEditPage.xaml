@@ -4,78 +4,86 @@
              x:Class="C971_PA.Views.TermEditPage">
     
     <StackLayout Orientation="Vertical"
-                 VerticalOptions="CenterAndExpand">
+                 VerticalOptions="Center">
 
 
-        <Grid
-            Padding="10,25,10,50"
-            RowSpacing="20"            
-            ColumnSpacing="10"
-            MinimumHeightRequest="100">
+        <Grid>
             <Label Text="Term Name:"
                        Grid.Column="0"
                        Grid.Row="0"
-                       VerticalOptions="CenterAndExpand"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
             <Entry Text="{Binding Name}"
                        Grid.Column="1"
                        Grid.Row="0"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
 
             <Label Text="Term Start:"
                        Grid.Column="0"
                        Grid.Row="1"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
             <DatePicker Date="{Binding Start}"
                        Grid.Column="1"
                        Grid.Row="1"
-                       VerticalOptions="CenterAndExpand"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
 
             <Label Text="Term End: "
                        Grid.Column="0"
                        Grid.Row="2"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
             <DatePicker Date="{Binding End}"
                        Grid.Column="1"
                        Grid.Row="2"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
 
-            <Label Text="Add Course: "
-                       Grid.Column="0"
-                       Grid.Row="3"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-            <Picker x:Name="addCoursePicker"
-                    SelectedIndexChanged="OnCoursePickerSelected"
-                       Grid.Column="1"
-                       Grid.Row="3"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
+            
         </Grid>
 
         <Label Text="Courses in Term:"
                Padding="10"
-               FontSize="Large"/>
-        <Button Text="Add Course"
-                Clicked="OnAddCourseButtonClicked"/>
+               FontSize="Medium"/>
         <CollectionView x:Name="termCoursesCollectionView"                        
                         SelectionMode="Multiple"
                         SelectionChanged="OnItemSelected">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <ScrollView>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Name}"
-                                FontSize="Medium"/>
-                        </StackLayout>
-                    </ScrollView>
+                    <StackLayout>
+                        <Label Text="{Binding Name}"
+                            FontSize="Small"/>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        
+            <Grid>
+            <Label Text="Add Course: "
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       FontSize="Small"/>
+            <Picker x:Name="addCoursePicker"
+                    SelectedIndexChanged="OnCoursePickerSelected"
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       FontSize="Small"/>
+            </Grid>
+            <Label x:Name="courseAddLabel"
+               Text="Courses To Add:"
+               Padding="10"
+               FontSize="Medium"/>
+        <CollectionView x:Name="coursesToAddCollectionView"                        
+                        SelectionMode="Multiple">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Name}"
+                            FontSize="Small"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Save"
+                x:Name="saveButton"
+                IsVisible="False"
+                Clicked="OnSaveButtonClicked"/>
     </StackLayout>
+    
 </ContentPage>
