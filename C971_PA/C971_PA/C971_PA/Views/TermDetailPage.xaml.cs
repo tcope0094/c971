@@ -37,32 +37,13 @@ namespace C971_PA.Views
             Course course = (Course)args.SelectedItem;
             if (course != null)
             {
-                await Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
+                await Shell.Current.Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
             }
         }
 
-        public async void OnSaveButtonClicked(object sender, EventArgs args)
-        {
-            Term term = (Term)BindingContext;
-            await App.DataBase.UpdateTermAsync(term);
-            await Navigation.PopModalAsync();
-        }
-
-        //public async void OnRemoveButtonClicked(object sender, EventArgs args)
-        //{
-        //    foreach (var item in termCoursesListView.SelectedItem)
-        //    {
-        //        await App.DataBase.RemoveCoursesFromTermAsync((Course)item);
-        //    }
-        //    termCoursesListView.ItemsSource = await App.DataBase.GetCoursesInTermAsync((Term)this.BindingContext);
-        //}
-
         public async void OnEditClicked(object sender, EventArgs args)
         {
-            await Shell.Current.Navigation.PushAsync(new TermEditPage((Term)this.BindingContext));
-            //await Shell.Current.GoToAsync($"{new TermEditPage((Term)this.BindingContext)}");
+            await Shell.Current.Navigation.PushModalAsync(new TermEditPage((Term)this.BindingContext));
         }
-
-
     }
 }

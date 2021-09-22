@@ -23,8 +23,6 @@ namespace C971_PA
                 Settings.FirstRun = false;
             }
 
-            //DependencyService.Register<MockDataStore>();
-
             MainPage = new AppShell();
 
         }

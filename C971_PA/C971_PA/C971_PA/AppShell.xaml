@@ -79,14 +79,16 @@
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
     <FlyoutItem Title="Terms" Icon="icon_feed.png">
-        <ShellContent Route="TermsPage" ContentTemplate="{DataTemplate local:TermsPage}" />
-    </FlyoutItem>    
+        <ShellContent Route="terms" ContentTemplate="{DataTemplate local:TermsPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Courses" Icon="icon_feed.png">
-        <ShellContent Route="CoursesPage" ContentTemplate="{DataTemplate local:CoursesPage}" />
+        <ShellContent Route="courses" ContentTemplate="{DataTemplate local:CoursesPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Configuration">
         <ShellContent Route="ConfigurationPage" ContentTemplate="{DataTemplate local:ConfigurationPage}" />
     </FlyoutItem>
+    
+    
     
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->

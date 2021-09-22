@@ -34,11 +34,11 @@ namespace C971_PA.Views
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             Term term = (Term)args.SelectedItem;
-            //if (args.SelectedItem != null)
-            //{
-            //    termsListView.SelectedItem = null;
-            await Shell.Current.GoToAsync($"{new TermDetailPage(term.TermKey)}");
-            //}
+            if (args.SelectedItem != null)
+            {
+                termsListView.SelectedItem = null;
+                await Navigation.PushAsync(new TermDetailPage(term.TermKey));
+            }
         }
     }
 }

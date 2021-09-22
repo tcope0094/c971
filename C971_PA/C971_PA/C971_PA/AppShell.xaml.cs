@@ -10,12 +10,14 @@ namespace C971_PA
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(TermsPage), typeof(TermsPage));
-            Routing.RegisterRoute(nameof(TermEditPage), typeof(TermEditPage));
-            Routing.RegisterRoute(nameof(CoursesPage), typeof(CoursesPage));
-            Routing.RegisterRoute(nameof(CourseDetailPage), typeof(CourseDetailPage));
-            Routing.RegisterRoute(nameof(CourseEditPage), typeof(CourseEditPage));
-            Routing.RegisterRoute(nameof(TermDetailPage), typeof(TermDetailPage));
+            Routing.RegisterRoute("terms", typeof(TermsPage));
+            Routing.RegisterRoute("term_edit", typeof(TermEditPage));
+            Routing.RegisterRoute("courses", typeof(CoursesPage));
+            Routing.RegisterRoute("course_detail", typeof(CourseDetailPage));
+            Routing.RegisterRoute("course_edit", typeof(CourseEditPage));
+            Routing.RegisterRoute("term_detail", typeof(TermDetailPage));
+
+            
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

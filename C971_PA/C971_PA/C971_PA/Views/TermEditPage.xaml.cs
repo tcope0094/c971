@@ -27,6 +27,12 @@ namespace C971_PA.Views
 
             this.BindingContext = term;
         }
+        protected override bool OnBackButtonPressed()
+        {
+            Shell.Current.GoToAsync("..");
+            //Navigation.PopModalAsync();
+            return base.OnBackButtonPressed();
+        }
         public void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
                         
