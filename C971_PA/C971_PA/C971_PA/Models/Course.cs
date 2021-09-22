@@ -32,5 +32,10 @@ namespace C971_PA.Models
 
         public static readonly List<string> PossibleStatuses = new List<string>{ "In Progress", "Plan to Take", "Completed", "Dropped" };
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

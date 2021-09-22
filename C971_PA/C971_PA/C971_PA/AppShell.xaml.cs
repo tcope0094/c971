@@ -16,8 +16,6 @@ namespace C971_PA
             Routing.RegisterRoute("course_detail", typeof(CourseDetailPage));
             Routing.RegisterRoute("course_edit", typeof(CourseEditPage));
             Routing.RegisterRoute("term_detail", typeof(TermDetailPage));
-
-            
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
