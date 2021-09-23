@@ -41,9 +41,9 @@
         <Label Text="Courses in Term:"
                Padding="10"
                FontSize="Medium"/>
+        <StackLayout >
         <CollectionView x:Name="termCoursesCollectionView"                        
-                        SelectionMode="Multiple"
-                        SelectionChanged="OnItemSelected">
+                        SelectionMode="Multiple">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
@@ -53,7 +53,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        
+        </StackLayout>
             <Grid>
             <Label Text="Add Course: "
                        Grid.Column="0"
@@ -70,7 +70,8 @@
                Padding="10"
                FontSize="Medium"/>
         <CollectionView x:Name="coursesToAddCollectionView"                        
-                        SelectionMode="Multiple">
+                        SelectionMode="Multiple"
+                        Margin="0">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">

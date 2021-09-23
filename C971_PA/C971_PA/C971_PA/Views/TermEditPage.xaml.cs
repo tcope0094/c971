@@ -40,6 +40,9 @@ namespace C971_PA.Views
 
             this.coursesToAdd = new ObservableCollection<Course>();
             coursesToAddCollectionView.ItemsSource = this.coursesToAdd;
+
+            testLayout.BindingContext = coursesInTerm;
+            
         }
         protected override bool OnBackButtonPressed()
         {
