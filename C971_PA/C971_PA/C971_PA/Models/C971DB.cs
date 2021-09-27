@@ -61,10 +61,10 @@ namespace C971_PA.Models
 
             return new ObservableCollection<Course>(list);
         }
-        public async Task<ObservableCollection<Course>> GetCoursesNotInATermAsync()
+        public async Task<List<Course>> GetCoursesNotInATermAsync()
         {
             List<Course> list = await _conn.Table<Course>().Where(c => c.TermID == null).ToListAsync();
-            return new ObservableCollection<Course>(list);
+            return list;
         }
 
         public async Task<int> RemoveCoursesFromTermAsync(Course course)

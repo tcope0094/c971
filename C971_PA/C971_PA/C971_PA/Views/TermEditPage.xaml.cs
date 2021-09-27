@@ -17,8 +17,9 @@ namespace C971_PA.Views
     {
         Term term;
         ObservableCollection<Course> coursesInTerm;
-        ObservableCollection<Course> coursesNotInTerm;
+        List<Course> coursesNotInTerm;
         ObservableCollection<Course> coursesToAdd;
+        List<Course> coursesToRemove = new List<Course>();
         public TermEditPage(Term term)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace C971_PA.Views
             var test = this.BindingContext;
 
             nameEntry.Text = term.Name;
+
         }
         protected override bool OnBackButtonPressed()
         {
@@ -73,14 +75,26 @@ namespace C971_PA.Views
                     int result = await App.DataBase.UpdateCourseAsync(item);
                 }
             }
+            if (coursesToRemove.Count > 0)
+            {
+                foreach (var item in coursesToRemove)
+                {
+                    if (item == null)
+                    {
+                        continue;
+                    }
+                    int result = await App.DataBase.RemoveCoursesFromTermAsync(item);
+                }
+            }
             Shell.Current.Navigation.PopModalAsync();
         }
 
         public async void OnRemoveCoursesButtonClicked(object sender, EventArgs args)
         {
-            int result = await App.DataBase.RemoveCoursesFromTermAsync((Course)termCoursesCollectionView.SelectedItem);
             this.coursesInTerm.Remove((Course)termCoursesCollectionView.SelectedItem);
+            this.coursesToRemove.Add((Course)termCoursesCollectionView.SelectedItem);
             removeButton.IsEnabled = false;
+            saveButton.IsEnabled = true;
         }
 
         public async void OnTermCoursesSelectionChanged(object sender, EventArgs args)
