@@ -34,10 +34,13 @@ namespace C971_PA.Views
             this.coursesInTerm = await App.DataBase.GetCoursesInTermAsync(this.term);
             termCoursesCollectionView.ItemsSource = coursesInTerm;
 
-            this.coursesNotInTerm = await App.DataBase.GetCoursesNotInTermAsync(this.term);
+            this.coursesNotInTerm = await App.DataBase.GetCoursesNotInATermAsync();
             addCoursePicker.ItemsSource = coursesNotInTerm;
 
             this.coursesToAdd = new ObservableCollection<Course>();
+            var test = this.BindingContext;
+
+            nameEntry.Text = term.Name;
         }
         protected override bool OnBackButtonPressed()
         {
@@ -45,47 +48,53 @@ namespace C971_PA.Views
             //Navigation.PopModalAsync();
             return base.OnBackButtonPressed();
         }
-        public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-                        
-        }
-
-        public async void OnAddCourseButtonClicked(object sender, EventArgs args)
-        {
-
-        }
-
         public async void OnCoursePickerSelected(object sender, EventArgs args)
         {
             coursesInTerm.Add((Course)addCoursePicker.SelectedItem);
+            coursesToAdd.Add((Course)addCoursePicker.SelectedItem);
             coursesNotInTerm.Remove((Course)addCoursePicker.SelectedItem);
             addCoursePicker.SelectedItem = null;
-            ValidateFields();
+            saveButton.IsEnabled = true;
         }
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
         {
-
-        }
-
-        private void OnNameEntryTextChanged(object sender, TextChangedEventArgs args)
-        {
-            ValidateFields();
-        }
-        private void OnDatePickerChanged(object sender, DateChangedEventArgs e)
-        {
-            ValidateFields();
-        }
-        private void ValidateFields()
-        {
-            if (nameEntry.Text == this.term.Name && startDatePicker.Date == this.term.Start && endDatePicker.Date == this.term.End && coursesToAdd.Count == 0)
+            App.DataBase.UpdateTermAsync((Term)this.BindingContext);
+            if (coursesToAdd.Count > 0)
             {
-                saveButton.IsEnabled = false;
+                foreach (var item in coursesToAdd)
+                {
+                    if (item == null)
+                    {
+                        continue;
+                    }
+                    var temp = coursesToAdd;
+                    item.TermID = this.term.TermKey;
+                    int result = await App.DataBase.UpdateCourseAsync(item);
+                }
+            }
+            Shell.Current.Navigation.PopModalAsync();
+        }
+
+        public async void OnRemoveCoursesButtonClicked(object sender, EventArgs args)
+        {
+            int result = await App.DataBase.RemoveCoursesFromTermAsync((Course)termCoursesCollectionView.SelectedItem);
+            this.coursesInTerm.Remove((Course)termCoursesCollectionView.SelectedItem);
+            removeButton.IsEnabled = false;
+        }
+
+        public async void OnTermCoursesSelectionChanged(object sender, EventArgs args)
+        {
+            if (termCoursesCollectionView.SelectedItem != null)
+            {
+                removeButton.IsEnabled = true;
             }
             else
             {
-                saveButton.IsEnabled = true;
+                removeButton.IsEnabled = false;
             }
-        }        
+        }
+
+
     }
 }
