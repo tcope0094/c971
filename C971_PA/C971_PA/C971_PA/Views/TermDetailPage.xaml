@@ -8,11 +8,7 @@
         <ToolbarItem Text="Edit"
                      Clicked="OnEditClicked"/>
     </ContentPage.ToolbarItems>
-
-
-
-
-
+    
     <StackLayout Orientation="Vertical"
                  VerticalOptions="CenterAndExpand">
 

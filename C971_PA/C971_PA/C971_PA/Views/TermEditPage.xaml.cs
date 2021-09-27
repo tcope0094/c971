@@ -19,7 +19,6 @@ namespace C971_PA.Views
         ObservableCollection<Course> coursesInTerm;
         ObservableCollection<Course> coursesNotInTerm;
         ObservableCollection<Course> coursesToAdd;
-        public bool IsRefreshing { get; set; }
         public TermEditPage(Term term)
         {
             InitializeComponent();
@@ -39,10 +38,6 @@ namespace C971_PA.Views
             addCoursePicker.ItemsSource = coursesNotInTerm;
 
             this.coursesToAdd = new ObservableCollection<Course>();
-            coursesToAddCollectionView.ItemsSource = this.coursesToAdd;
-
-            testLayout.BindingContext = coursesInTerm;
-            
         }
         protected override bool OnBackButtonPressed()
         {
@@ -62,14 +57,35 @@ namespace C971_PA.Views
 
         public async void OnCoursePickerSelected(object sender, EventArgs args)
         {
-            coursesToAdd.Add((Course)addCoursePicker.SelectedItem);
+            coursesInTerm.Add((Course)addCoursePicker.SelectedItem);
             coursesNotInTerm.Remove((Course)addCoursePicker.SelectedItem);
-            addCoursePicker.SelectedItem = null;            
+            addCoursePicker.SelectedItem = null;
+            ValidateFields();
         }
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
         {
 
         }
+
+        private void OnNameEntryTextChanged(object sender, TextChangedEventArgs args)
+        {
+            ValidateFields();
+        }
+        private void OnDatePickerChanged(object sender, DateChangedEventArgs e)
+        {
+            ValidateFields();
+        }
+        private void ValidateFields()
+        {
+            if (nameEntry.Text == this.term.Name && startDatePicker.Date == this.term.Start && endDatePicker.Date == this.term.End && coursesToAdd.Count == 0)
+            {
+                saveButton.IsEnabled = false;
+            }
+            else
+            {
+                saveButton.IsEnabled = true;
+            }
+        }        
     }
 }

@@ -7,35 +7,54 @@
                  VerticalOptions="Center">
 
 
-        <Grid>
+        <Grid Padding="10,25,10,50"
+              RowSpacing="25"
+              ColumnSpacing="10"
+              MinimumHeightRequest="100">
+            
             <Label Text="Term Name:"
                        Grid.Column="0"
                        Grid.Row="0"
-                       FontSize="Small"/>
+                       FontSize="Medium"/>
             <Entry Text="{Binding Name}"
                        Grid.Column="1"
                        Grid.Row="0"
-                       FontSize="Small"/>
+                       FontSize="Medium"
+                       x:Name="nameEntry"
+                   TextChanged="OnNameEntryTextChanged"/>
 
             <Label Text="Term Start:"
                        Grid.Column="0"
                        Grid.Row="1"
-                       FontSize="Small"/>
+                       FontSize="Medium"/>
             <DatePicker Date="{Binding Start}"
                        Grid.Column="1"
                        Grid.Row="1"
-                       FontSize="Small"/>
+                       FontSize="Medium"
+                       x:Name="startDatePicker"
+                        DateSelected="OnDatePickerChanged"/>
 
             <Label Text="Term End: "
                        Grid.Column="0"
                        Grid.Row="2"
-                       FontSize="Small"/>
+                       FontSize="Medium"/>
             <DatePicker Date="{Binding End}"
                        Grid.Column="1"
                        Grid.Row="2"
-                       FontSize="Small"/>
+                       FontSize="Medium"
+                       x:Name="endDatePicker"
+                        DateSelected="OnDatePickerChanged"/>
 
-            
+            <Label Text="Add Course: "
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+            <Picker x:Name="addCoursePicker"
+                    SelectedIndexChanged="OnCoursePickerSelected"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+
         </Grid>
 
         <Label Text="Courses in Term:"
@@ -48,42 +67,16 @@
                 <DataTemplate>
                     <StackLayout>
                         <Label Text="{Binding Name}"
-                            FontSize="Small"/>
+                            FontSize="Medium"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
         </StackLayout>
-            <Grid>
-            <Label Text="Add Course: "
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       FontSize="Small"/>
-            <Picker x:Name="addCoursePicker"
-                    SelectedIndexChanged="OnCoursePickerSelected"
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       FontSize="Small"/>
-            </Grid>
-            <Label x:Name="courseAddLabel"
-               Text="Courses To Add:"
-               Padding="10"
-               FontSize="Medium"/>
-        <CollectionView x:Name="coursesToAddCollectionView"                        
-                        SelectionMode="Multiple"
-                        Margin="0">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10">
-                        <Label Text="{Binding Name}"
-                            FontSize="Small"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            
         <Button Text="Save"
                 x:Name="saveButton"
-                IsVisible="False"
+                IsEnabled="False"
                 Clicked="OnSaveButtonClicked"/>
     </StackLayout>
     

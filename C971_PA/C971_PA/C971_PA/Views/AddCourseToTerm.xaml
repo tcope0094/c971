@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_PA.Views.AddCourseToTerm"
+             Title="{Binding Name}">
+    
+    <StackLayout Padding="10,25,10,50"
+                 Orientation="Vertical"
+                 VerticalOptions="Center">
+        
+        <Grid RowSpacing="25"
+              ColumnSpacing="10"
+              MinimumHeightRequest="100">
+            
+            <Label Text="Add Course: "
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           FontSize="Medium"/>
+            <Picker x:Name="addCoursePicker"
+                        SelectedIndexChanged="OnCoursePickerSelected"
+                           Grid.Column="1"
+                           Grid.Row="0"
+                           FontSize="Medium"/>
+
+
+        </Grid>
+
+        <Label Text="Courses to Add:"
+               FontSize="Medium"/>
+
+        <CollectionView x:Name="coursesToAddCollectionView"                        
+                            Margin="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Name}"
+                                FontSize="Medium"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        <Button Text="Save"
+                Clicked="OnSaveButtonClicked"/>
+    </StackLayout>
+</ContentPage>

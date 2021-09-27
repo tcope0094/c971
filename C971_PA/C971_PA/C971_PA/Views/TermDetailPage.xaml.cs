@@ -43,7 +43,7 @@ namespace C971_PA.Views
 
         public async void OnEditClicked(object sender, EventArgs args)
         {
-            await Shell.Current.Navigation.PushModalAsync(new TermEditPage((Term)this.BindingContext));
+            Shell.Current.Navigation.PushModalAsync(new TermEditPage((Term)this.BindingContext));
         }
     }
 }
