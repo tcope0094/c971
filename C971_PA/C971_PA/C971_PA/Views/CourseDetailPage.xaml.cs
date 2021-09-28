@@ -39,7 +39,7 @@ namespace C971_PA.Views
 
         private async void OnAssessmentsClicked(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new AssessmentsByCoursePage(course));
+            await Shell.Current.Navigation.PushModalAsync(new AssessmentsByCoursePage(course));
         }
 
         private async void OnDeleteClicked(object sender, EventArgs args)
@@ -49,7 +49,11 @@ namespace C971_PA.Views
             if (confirm)
             {
                 int result = await App.DataBase.DeleteCourseAsync(course);
-                await Shell.Current.Navigation.PopAsync();
+                
+                // had to use the RemovePage method, the PopAsync method threw an ambiguous route error when you navigated to this page from 
+                // the TermDetail page, but not from the course list page
+
+                Shell.Current.Navigation.RemovePage(this);
             }
         }
 

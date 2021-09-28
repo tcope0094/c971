@@ -48,11 +48,9 @@ namespace C971_PA.Views
 
         private async Task<List<string>> GetAllInstructorNames()
         {
-            var task = App.DataBase.GetAllInstructorsAsync();
-            task.Wait();
-            var result = task.Result;
+            var task = await App.DataBase.GetAllInstructorsAsync();
             List<string> returnList = new List<string>();
-            foreach (var item in result)
+            foreach (var item in task)
             {
                 returnList.Add(item.Name);
             }

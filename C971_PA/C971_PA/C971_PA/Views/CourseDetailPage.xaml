@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.CourseDetailPage"
-             Title="{Binding Name}">
+             x:Class="C971_PA.Views.CourseDetailPage">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Assessments"
@@ -15,6 +14,8 @@
     
     <ContentPage.Content>
         <StackLayout>
+
+            <Label Text="{Binding Name}"/>
             <Grid
             Padding="10,25,10,50"
             RowSpacing="25"            
