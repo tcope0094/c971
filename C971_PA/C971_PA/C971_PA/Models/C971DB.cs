@@ -75,7 +75,7 @@ namespace C971_PA.Models
 
         public async Task<Instructor> GetInstructorByCourseAsync(Course course)
         {
-            return await _conn.Table<Instructor>().Where(i => i.InstructorKey == course.InstructorID).FirstOrDefaultAsync();
+            return await _conn.Table<Instructor>().Where(i => i.InstructorKey == course.InstructorID).FirstAsync();
         }
 
         public async Task<Course> GetCourseAsync(int courseKey)

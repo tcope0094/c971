@@ -17,24 +17,40 @@ namespace C971_PA.Views
         Instructor instructor;
         List<Instructor> allInstructors;
         Course course;
-        public CourseEditPage(Course course)
+        public CourseEditPage(Course course, Instructor instructor)
         {
             InitializeComponent();
             this.course = course;
+            this.instructor = instructor;
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             this.BindingContext = this.course;
-            this.instructor = await App.DataBase.GetInstructorByCourseAsync(this.course);
-            this.allInstructors = await App.DataBase.GetAllInstructorsAsync();
+            this.allInstructors = GetAllInstructorAndWait();
             instructorPicker.BindingContext = allInstructors;
 
 
             instructorPicker.ItemsSource = allInstructors;
             var test = allInstructors.IndexOf(instructor);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor);
+        }
+
+        private static Instructor GetInstructorAndWait(Course course)
+        {
+            var task = App.DataBase.GetInstructorByCourseAsync(course);
+            task.Wait();
+            var result = task.Result;
+            return result;
+        }
+
+        private static List<Instructor> GetAllInstructorAndWait()
+        {
+            var task = App.DataBase.GetAllInstructorsAsync();
+            task.Wait();
+            var result = task.Result;
+            return result;
         }
     }
 }

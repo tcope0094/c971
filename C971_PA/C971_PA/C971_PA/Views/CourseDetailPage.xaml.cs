@@ -34,7 +34,7 @@ namespace C971_PA.Views
 
         public async void OnEditClicked(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new CourseEditPage((Course)this.BindingContext));
+            await Shell.Current.Navigation.PushModalAsync(new CourseEditPage((Course)this.BindingContext, instructor));
         }
 
         private async void OnAssessmentsClicked(object sender, EventArgs args)
