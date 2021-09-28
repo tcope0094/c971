@@ -19,6 +19,23 @@ namespace C971_PA.Views
         {
             InitializeComponent();
             this.instructor = instructor;
+            this.BindingContext = instructor;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            saveButton.IsEnabled = false;
+        }
+
+        private void OnSaveButtonClicked(object sender, EventArgs args)
+        {
+
+        }
+
+        private void FieldUpdated(object sender, EventArgs args)
+        {
+            saveButton.IsEnabled = true;
         }
     }
 }

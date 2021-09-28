@@ -16,6 +16,8 @@
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
                 <Entry Text="{Binding Name}"
+                       x:Name="nameEntry"
+                       TextChanged="FieldUpdated"
                        Grid.Column="1"
                        Grid.Row="1"
                        VerticalOptions="Center"
@@ -27,6 +29,8 @@
                        FontSize="Medium"/>
 
                 <Entry Text="{Binding Phone}"
+                       x:Name="phoneEntry"
+                       TextChanged="FieldUpdated"
                        Grid.Column="1"
                        Grid.Row="2"
                        FontSize="Medium"/>
@@ -36,11 +40,16 @@
                        Grid.Row="3"
                        FontSize="Medium"/>
                 <Entry Text="{Binding Email}"
+                       x:Name="emailEntry"
+                       TextChanged="FieldUpdated"
                        Grid.Column="1"
                        Grid.Row="3"
                        FontSize="Medium"/>
             </Grid>
-            
+            <Button Text="Save"
+                    Clicked="OnSaveButtonClicked"
+                    x:Name="saveButton"
+                    IsEnabled="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
