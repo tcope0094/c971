@@ -92,7 +92,7 @@
                        Grid.Column="1"
                        Grid.Row="2"
                        VerticalOptions="Center"
-                       FontSize="Medium"/>
+                       FontSize="Small"/>
             </Grid>
             <Label Text="Notes:"
                    FontSize="Medium"/>

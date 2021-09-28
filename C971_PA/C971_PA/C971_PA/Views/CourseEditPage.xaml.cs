@@ -74,7 +74,10 @@ namespace C971_PA.Views
 
         private async void OnSaveButtonClicked(object sender, EventArgs args)
         {
-            course.InstructorID = newInstructor.InstructorKey;
+            if (newInstructor != null)
+            {
+                course.InstructorID = newInstructor.InstructorKey;
+            }
             course.Status = (string)statusPicker.SelectedItem;
 
             var result = App.DataBase.UpdateCourseAsync(course);
