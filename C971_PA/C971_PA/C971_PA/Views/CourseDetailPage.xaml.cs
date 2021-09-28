@@ -39,7 +39,7 @@ namespace C971_PA.Views
 
         private async void OnAssessmentsClicked(object sender, EventArgs args)
         {
-            await Shell.Current.Navigation.PushModalAsync(new AssessmentsByCoursePage(course));
+            await Shell.Current.Navigation.PushAsync(new AssessmentsByCoursePage(course));
         }
 
         private async void OnDeleteClicked(object sender, EventArgs args)

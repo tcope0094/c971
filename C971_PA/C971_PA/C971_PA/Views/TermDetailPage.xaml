@@ -34,7 +34,7 @@
                        Grid.Row="1"
                        VerticalOptions="Center"
                        FontSize="Medium"/>
-            <Label Text="{Binding Start}"
+            <Label Text="{Binding Start, StringFormat='{0:MM/dd/yyy}'}"
                        Grid.Column="1"
                        Grid.Row="1"
                        VerticalOptions="CenterAndExpand"
@@ -45,7 +45,7 @@
                        Grid.Row="2"
                        VerticalOptions="Center"
                        FontSize="Medium"/>
-            <Label Text="{Binding End}"
+            <Label Text="{Binding End, StringFormat='{0:MM/dd/yyy}'}"
                        Grid.Column="1"
                        Grid.Row="2"
                        VerticalOptions="Center"

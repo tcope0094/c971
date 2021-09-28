@@ -44,7 +44,7 @@
                        Grid.Column="0"
                        Grid.Row="3"
                        FontSize="Medium"/>
-                <Label Text="{Binding DueDate}"
+                <Label Text="{Binding DueDate, StringFormat='{0:MM/dd/yyy}'}"
                        Grid.Column="1"
                        Grid.Row="3"
                        FontSize="Medium"/>

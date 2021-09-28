@@ -16,11 +16,13 @@
         <StackLayout>
 
             <Label Text="{Binding Name}"
+                   Padding="10"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"
-                   FontSize="Large"/>
+                   FontSize="Medium"
+                   FontAttributes="Bold"/>
             <Grid
-            Padding="10,25,10,50"
+            Padding="10,10,10,20"
             RowSpacing="25"            
             ColumnSpacing="10"
             MinimumHeightRequest="100">                
@@ -40,7 +42,7 @@
                        Grid.Column="0"
                        Grid.Row="2"
                        FontSize="Medium"/>
-                <Label Text="{Binding Start}"
+                <Label Text="{Binding Start, StringFormat='{0:MM/dd/yyy}'}"
                        Grid.Column="1"
                        Grid.Row="2"
                        FontSize="Medium"/>
@@ -49,7 +51,7 @@
                        Grid.Column="0"
                        Grid.Row="3"
                        FontSize="Medium"/>
-                <Label Text="{Binding End}"
+                <Label Text="{Binding End, StringFormat='{0:MM/dd/yyy}'}"
                        Grid.Column="1"
                        Grid.Row="3"
                        FontSize="Medium"/>
@@ -58,12 +60,16 @@
                        Grid.Column="0"
                        Grid.Row="4"
                        FontSize="Medium"/>
-                <Label Text="{Binding DueDate}"
+                <Label Text="{Binding DueDate, StringFormat='{0:MM/dd/yyy}'}"
                        Grid.Column="1"
                        Grid.Row="4"
                        FontSize="Medium"/>
             </Grid>
-            <Grid x:Name="instructorGrid">
+            <Grid x:Name="instructorGrid"
+            Padding="10,10,10,10"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">
 
                 <Label Text="Instructor Name: "
                        Grid.Column="0"
@@ -96,10 +102,11 @@
                        Grid.Column="1"
                        Grid.Row="2"
                        VerticalOptions="Center"
-                       FontSize="Small"/>
+                       FontSize="Medium"/>
             </Grid>
             <Label Text="Notes:"
-                   FontSize="Medium"/>
+                   FontSize="Medium"
+                   Padding="10"/>
             <ScrollView>
                 <Label Text="{Binding Notes}"/>
             </ScrollView>
