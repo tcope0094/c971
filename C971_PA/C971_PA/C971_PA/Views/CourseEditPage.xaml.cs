@@ -19,6 +19,7 @@ namespace C971_PA.Views
         List<string> allStatuses;
         Course course;
         Instructor newInstructor;
+        bool loaded;
         public CourseEditPage(Course course, Instructor instructor)
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace C971_PA.Views
 
             statusPicker.SelectedIndex = allStatuses.IndexOf(course.Status);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
+            loaded = true;
         }
 
         private async Task<List<string>> GetAllInstructorNames()
@@ -57,11 +59,15 @@ namespace C971_PA.Views
             return returnList;
         }
 
-        private async void OnInstructorSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnInstructorSelected(object sender, EventArgs args)
         {
-            if (instructor.Name != (string)args.SelectedItem)
+            if (loaded)
             {
-                newInstructor = await App.DataBase.GetInstructorByNameAsync((string)args.SelectedItem);
+                if (instructor.Name != (string)instructorPicker.SelectedItem)
+                {
+                    newInstructor = await App.DataBase.GetInstructorByNameAsync((string)instructorPicker.SelectedItem);
+                    saveButton.IsEnabled = true;
+                }
             }
         }
 
@@ -74,6 +80,14 @@ namespace C971_PA.Views
             var result = App.DataBase.UpdateCourseAsync(course);
 
             await Shell.Current.Navigation.PopModalAsync();
+        }
+
+        private void OnFieldChanged(object sender, EventArgs args)
+        {
+            if (loaded)
+            {
+                saveButton.IsEnabled = true;
+            }
         }
     }
 }

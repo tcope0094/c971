@@ -18,6 +18,8 @@
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
                 <Entry Text="{Binding Name}"
+                       TextChanged="OnFieldChanged"
+                       x:Name="nameEntry"
                        Grid.Column="1"
                        Grid.Row="1"
                        VerticalOptions="Center"
@@ -30,37 +32,44 @@
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
                 <Picker x:Name="statusPicker"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
+                        SelectedIndexChanged="OnFieldChanged"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="Medium"/>
 
                 <Label Text="Start:"
                        Grid.Column="0"
                        Grid.Row="3"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding Start}"
-                       Grid.Column="1"
-                       Grid.Row="3"
-                       FontSize="Medium"/>
+                            DateSelected="OnFieldChanged"
+                            x:Name="startDatePicker"
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            FontSize="Medium"/>
 
                 <Label Text="End: "
                        Grid.Column="0"
                        Grid.Row="4"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding End}"
-                       Grid.Column="1"
-                       Grid.Row="4"
-                       FontSize="Medium"/>
+                            DateSelected="OnFieldChanged"
+                            x:Name="endDatePicker"
+                            Grid.Column="1"
+                            Grid.Row="4"
+                            FontSize="Medium"/>
 
                 <Label Text="Due Date:"
                        Grid.Column="0"
                        Grid.Row="5"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding DueDate}"
-                       Grid.Column="1"
-                       Grid.Row="5"
-                       FontSize="Medium"/>
+                            DateSelected="OnFieldChanged"
+                            x:Name="dueDatePicker"
+                            Grid.Column="1"
+                            Grid.Row="5"
+                            FontSize="Medium"/>
 
                 <Label Text="Instructor:"
                        Grid.Column="0"
@@ -76,9 +85,13 @@
             <Label Text="Notes:"
                    Padding="10"
                    FontSize="Medium"/>
-            <Editor Text="{Binding Notes}"/>
+            <Editor Text="{Binding Notes}"
+                    x:Name="notesEditor"
+                    TextChanged="OnFieldChanged"/>
             <Button Text="Save"
-                    Clicked="OnSaveButtonClicked"/>
+                    Clicked="OnSaveButtonClicked"
+                    IsEnabled="False"
+                    x:Name="saveButton"/>
         </StackLayout>
     </ContentPage.Content>
 
