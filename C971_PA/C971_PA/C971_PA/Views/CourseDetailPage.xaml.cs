@@ -8,28 +8,30 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using C971_PA.Models;
+using System.Windows.Input;
 
 namespace C971_PA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [QueryProperty(nameof(CourseKey), "courseKey")]
     public partial class CourseDetailPage : ContentPage
     {
-        public int CourseKey { get; set; }
+        int courseKey;
 
 
         Instructor instructor;
         Course course;
-        public CourseDetailPage()
+        public CourseDetailPage(int courseKey)
         {
             InitializeComponent();
-            //this.courseKey = courseKey;
+            this.courseKey = courseKey;
+
+            backCommand.Command = new Command(async () => Shell.Current.Navigation.RemovePage(this));
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            this.BindingContext = await App.DataBase.GetCourseAsync(CourseKey);
+            this.BindingContext = await App.DataBase.GetCourseAsync(courseKey);
             this.course = (Course)this.BindingContext;
             this.instructor = await App.DataBase.GetInstructorByCourseAsync((Course)this.BindingContext);
             instructorGrid.BindingContext = instructor;
@@ -59,5 +61,6 @@ namespace C971_PA.Views
                 Shell.Current.Navigation.RemovePage(this);
             }
         }
+
     }
 }

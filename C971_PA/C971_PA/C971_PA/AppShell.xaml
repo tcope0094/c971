@@ -4,7 +4,7 @@
        xmlns:local="clr-namespace:C971_PA.Views"
        Title="C971_PA"
        x:Class="C971_PA.AppShell">
-
+    
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
     

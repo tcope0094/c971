@@ -22,5 +22,6 @@ namespace C971_PA
         {
             await Shell.Current.GoToAsync("//LoginPage");
         }
+        
     }
 }
