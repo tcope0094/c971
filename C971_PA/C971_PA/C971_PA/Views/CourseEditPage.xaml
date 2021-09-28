@@ -17,7 +17,7 @@
                        Grid.Row="1"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
-                <Entry Text="{Binding Status}"
+                <Entry Text="{Binding Name}"
                        Grid.Column="1"
                        Grid.Row="1"
                        VerticalOptions="Center"
@@ -29,7 +29,7 @@
                        Grid.Row="2"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
-                <Label Text="{Binding Status}"
+                <Picker 
                        Grid.Column="1"
                        Grid.Row="2"
                        VerticalOptions="Center"
@@ -39,7 +39,7 @@
                        Grid.Column="0"
                        Grid.Row="3"
                        FontSize="Medium"/>
-                <Label Text="{Binding Start}"
+                <DatePicker Date="{Binding Start}"
                        Grid.Column="1"
                        Grid.Row="3"
                        FontSize="Medium"/>
@@ -48,55 +48,30 @@
                        Grid.Column="0"
                        Grid.Row="4"
                        FontSize="Medium"/>
-                <Label Text="{Binding End}"
+                <DatePicker Date="{Binding End}"
                        Grid.Column="1"
                        Grid.Row="4"
                        FontSize="Medium"/>
 
-                <Label Text="Due Date: "
+                <Label Text="Due Date:"
                        Grid.Column="0"
                        Grid.Row="5"
                        FontSize="Medium"/>
-                <Label Text="{Binding DueDate}"
+                <DatePicker Date="{Binding DueDate}"
                        Grid.Column="1"
                        Grid.Row="5"
                        FontSize="Medium"/>
+
+                <Label Text="Instructor:"
+                       Grid.Column="0"
+                       Grid.Row="6"
+                       FontSize="Medium"/>
+                <Picker x:Name="instructorPicker"
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        FontSize="Medium"/>
             </Grid>
-            <Grid x:Name="instructorGrid">
 
-                <Label Text="Instructor Name: "
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-                <Label Text="{Binding Name}"
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-
-                <Label Text="Phone: "
-                       Grid.Column="0"
-                       Grid.Row="1"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-                <Label Text="{Binding Phone}"
-                       Grid.Column="1"
-                       Grid.Row="1"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-
-                <Label Text="Email: "
-                       Grid.Column="0"
-                       Grid.Row="2"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-                <Label Text="{Binding Email}"
-                       Grid.Column="1"
-                       Grid.Row="2"
-                       VerticalOptions="Center"
-                       FontSize="Medium"/>
-            </Grid>
             <Label Text="Notes:"
                    FontSize="Medium"/>
             <Label Text="{Binding Notes}"/>

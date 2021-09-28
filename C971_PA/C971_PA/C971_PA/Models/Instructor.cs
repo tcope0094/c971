@@ -17,5 +17,10 @@ namespace C971_PA.Models
         [MaxLength(250), NotNull]
         public string Phone { get; set; }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
     }
 }

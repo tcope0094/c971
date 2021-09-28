@@ -14,6 +14,8 @@ namespace C971_PA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseEditPage : ContentPage
     {
+        Instructor instructor;
+        List<Instructor> allInstructors;
         Course course;
         public CourseEditPage(Course course)
         {
@@ -21,11 +23,18 @@ namespace C971_PA.Views
             this.course = course;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            this.BindingContext = this.course;
+            this.instructor = await App.DataBase.GetInstructorByCourseAsync(this.course);
+            this.allInstructors = await App.DataBase.GetAllInstructorsAsync();
+            instructorPicker.BindingContext = allInstructors;
 
-            this.BindingContext = course;
+
+            instructorPicker.ItemsSource = allInstructors;
+            var test = allInstructors.IndexOf(instructor);
+            instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor);
         }
     }
 }
