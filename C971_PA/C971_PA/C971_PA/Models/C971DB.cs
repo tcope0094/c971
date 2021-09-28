@@ -134,6 +134,11 @@ namespace C971_PA.Models
             return _conn.Table<Instructor>().Where(i => i.InstructorKey == instructorKey).FirstOrDefaultAsync();
         }
 
+        public Task<List<Course>> GetCoursesByInstructor(Instructor instructor)
+        {
+            return _conn.Table<Course>().Where(c => c.InstructorID == instructor.InstructorKey).ToListAsync();
+        }
+
         public void CreateTables()
         {
             _syncConn.CreateTable<Term>();

@@ -38,13 +38,22 @@ namespace C971_PA.Views
         private async void OnDeleteClicked(object sender, EventArgs args)
         {
 
+            List<Course> courses = await App.DataBase.GetCoursesByInstructor(instructor);
 
-            bool confirm = await DisplayAlert("Confirm Delete", "Are you sure you want to delete this instructor?", "Yes", "No");
-
-            if (confirm)
+            if (courses.Count > 0)
             {
-                int result = await App.DataBase.DeleteInstructorAsync(instructor);
-                await Shell.Current.Navigation.PopAsync();
+                await Shell.Current.DisplayAlert("Unable to Delete", "The selected instructor is currently assigned to one or more classes, remove them from all classes and then try again.","Ok");
+            }
+
+            else
+            {
+                bool confirm = await DisplayAlert("Confirm Delete", "Are you sure you want to delete this instructor?", "Yes", "No");
+
+                if (confirm)
+                {
+                    int result = await App.DataBase.DeleteInstructorAsync(instructor);
+                    await Shell.Current.Navigation.PopAsync();
+                }
             }
         }
     }
