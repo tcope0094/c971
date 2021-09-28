@@ -17,6 +17,7 @@ namespace C971_PA.Views
         public AssessmentsPage()
         {
             InitializeComponent();
+            backCommand.Command = new Command(async () => Shell.Current.Navigation.RemovePage(this));
         }
 
         protected override async void OnAppearing()

@@ -23,6 +23,7 @@ namespace C971_PA.Views
             InitializeComponent();
 
             this.course = course;
+            backCommand.Command = new Command(async () => Shell.Current.Navigation.RemovePage(this));
         }
 
         protected override async void OnAppearing()

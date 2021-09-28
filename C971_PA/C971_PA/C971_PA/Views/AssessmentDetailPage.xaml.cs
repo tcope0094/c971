@@ -22,6 +22,7 @@ namespace C971_PA.Views
             InitializeComponent();
 
             this.assessmentKey = assessmentKey;
+            backCommand.Command = new Command(async () => Shell.Current.Navigation.RemovePage(this));
         }
 
         protected override async void OnAppearing()

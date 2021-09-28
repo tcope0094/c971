@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="C971_PA.Views.AssessmentDetailPage"
              Title="{Binding Name}">
-    
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior x:Name="backCommand"/>
+    </Shell.BackButtonBehavior>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit"
                      Clicked="OnEditClicked"/>
