@@ -15,7 +15,10 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="{Binding Name}"/>
+            <Label Text="{Binding Name}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="Large"/>
             <Grid
             Padding="10,25,10,50"
             RowSpacing="25"            
