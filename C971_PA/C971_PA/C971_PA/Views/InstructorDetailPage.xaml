@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_PA.Views.InstructorDetailPage">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior x:Name="backCommand"/>
+    </Shell.BackButtonBehavior>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit"
+                     Clicked="OnEditClicked"/>
+        <ToolbarItem Text="Delete"
+                     Clicked="OnDeleteClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid
+            Padding="10,25,10,50"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">
+
+                <Label Text="Name:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Name}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Phone:"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+
+                <Label Text="{Binding Phone}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+
+                <Label Text="Email: "
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Email}"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

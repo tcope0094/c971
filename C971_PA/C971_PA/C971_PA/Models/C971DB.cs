@@ -119,6 +119,10 @@ namespace C971_PA.Models
             return await _conn.Table<Instructor>().Where(i => i.Name == name).FirstOrDefaultAsync();
         }
 
+        public async Task<int> DeleteInstructorAsync(Instructor instructor)
+        {
+            return await _conn.DeleteAsync(instructor);
+        }
 
         public void CreateTables()
         {
