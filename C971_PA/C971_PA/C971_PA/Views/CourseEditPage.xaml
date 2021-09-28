@@ -67,6 +67,7 @@
                        Grid.Row="6"
                        FontSize="Medium"/>
                 <Picker x:Name="instructorPicker"
+                        SelectedIndexChanged="OnInstructorSelected"
                         Grid.Column="1"
                         Grid.Row="6"
                         FontSize="Medium"/>
@@ -76,6 +77,8 @@
                    Padding="10"
                    FontSize="Medium"/>
             <Editor Text="{Binding Notes}"/>
+            <Button Text="Save"
+                    Clicked="OnSaveButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 

@@ -18,6 +18,7 @@ namespace C971_PA.Views
         List<string> allInstructors;
         List<string> allStatuses;
         Course course;
+        Instructor newInstructor;
         public CourseEditPage(Course course, Instructor instructor)
         {
             InitializeComponent();
@@ -25,11 +26,12 @@ namespace C971_PA.Views
             this.instructor = instructor;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             this.BindingContext = this.course;
-            this.allInstructors = GetAllInstructorNames();
+            this.allInstructors = await GetAllInstructorNames();
+
             this.allStatuses = Course.PossibleStatuses;
 
             statusPicker.BindingContext = course.Status;
@@ -42,15 +44,7 @@ namespace C971_PA.Views
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
         }
 
-        private static Instructor GetInstructorAndWait(Course course)
-        {
-            var task = App.DataBase.GetInstructorByCourseAsync(course);
-            task.Wait();
-            var result = task.Result;
-            return result;
-        }
-
-        private static List<string> GetAllInstructorNames()
+        private async Task<List<string>> GetAllInstructorNames()
         {
             var task = App.DataBase.GetAllInstructorsAsync();
             task.Wait();
@@ -61,6 +55,25 @@ namespace C971_PA.Views
                 returnList.Add(item.Name);
             }
             return returnList;
+        }
+
+        private async void OnInstructorSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            if (instructor.Name != (string)args.SelectedItem)
+            {
+                newInstructor = await App.DataBase.GetInstructorByNameAsync((string)args.SelectedItem);
+            }
+        }
+
+
+        private async void OnSaveButtonClicked(object sender, EventArgs args)
+        {
+            course.InstructorID = newInstructor.InstructorKey;
+            course.Status = (string)statusPicker.SelectedItem;
+
+            var result = App.DataBase.UpdateCourseAsync(course);
+
+            await Shell.Current.Navigation.PopModalAsync();
         }
     }
 }

@@ -96,7 +96,9 @@
             </Grid>
             <Label Text="Notes:"
                    FontSize="Medium"/>
-            <Label Text="{Binding Notes}"/>
+            <ScrollView>
+                <Label Text="{Binding Notes}"/>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -114,6 +114,11 @@ namespace C971_PA.Models
             return await _conn.UpdateAsync(assessment);
         }
 
+        public async Task<Instructor> GetInstructorByNameAsync(string name)
+        {
+            return await _conn.Table<Instructor>().Where(i => i.Name == name).FirstOrDefaultAsync();
+        }
+
 
         public void CreateTables()
         {
