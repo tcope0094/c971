@@ -31,7 +31,7 @@ namespace C971_PA.Views
 
             if (args.SelectedItem != null)
             {
-                await Shell.Current.Navigation.PushAsync(new InstructorDetailPage(instructor));
+                await Shell.Current.Navigation.PushAsync(new InstructorDetailPage(instructor.InstructorKey));
             }
         }
     }

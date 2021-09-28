@@ -129,6 +129,11 @@ namespace C971_PA.Models
             return await _conn.UpdateAsync(instructor);
         }
 
+        public async Task<Instructor> GetInstructorAsync(int instructorKey)
+        {
+            return await _conn.Table<Instructor>().Where(i => i.InstructorKey == instructorKey).FirstAsync();
+        }
+
         public void CreateTables()
         {
             _syncConn.CreateTable<Term>();

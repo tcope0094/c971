@@ -15,17 +15,20 @@ namespace C971_PA.Views
     public partial class InstructorDetailPage : ContentPage
     {
         Instructor instructor;
-        public InstructorDetailPage(Instructor instructor)
+        int instructorKey;
+        public InstructorDetailPage(int instructorKey)
         {
             InitializeComponent();
-            this.instructor = instructor;
+            this.instructorKey = instructorKey;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             this.BindingContext = instructor;
+
+            this.instructor = await App.DataBase.GetInstructorAsync(instructorKey);
         }
         private async void OnEditClicked(object sender, EventArgs args)
         {
