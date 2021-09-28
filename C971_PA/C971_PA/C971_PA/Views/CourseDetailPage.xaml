@@ -9,6 +9,8 @@
                      Clicked="OnAssessmentsClicked"/>
         <ToolbarItem Text="Edit"
                      Clicked="OnEditClicked"/>
+        <ToolbarItem Text="Delete"
+                     Clicked="OnDeleteClicked"/>
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
@@ -92,8 +94,9 @@
                        VerticalOptions="Center"
                        FontSize="Medium"/>
             </Grid>
-            <Label Text="Notes:"/>
-            <Editor Text="{Binding Notes}"/>
+            <Label Text="Notes:"
+                   FontSize="Medium"/>
+            <Label Text="{Binding Notes}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

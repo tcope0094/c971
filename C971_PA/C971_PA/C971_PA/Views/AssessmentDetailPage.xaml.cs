@@ -14,26 +14,38 @@ namespace C971_PA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AssessmentDetailPage : ContentPage
     {
-
+        int assessmentKey;
         Assessment assessment;
 
-        public AssessmentDetailPage(Assessment assessment)
+        public AssessmentDetailPage(int assessmentKey)
         {
             InitializeComponent();
 
-            this.assessment = assessment;
+            this.assessmentKey = assessmentKey;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            this.BindingContext = assessment;
+            
+            this.assessment = await App.DataBase.GetAssessmentAsync(assessmentKey);
+            this.BindingContext = this.assessment;
         }
 
         private async void OnEditClicked(object sender, EventArgs args)
         {
             await Shell.Current.Navigation.PushModalAsync(new AssessmentEditPage(assessment));
+        }
+
+        private async void OnDeleteClicked(object sender, EventArgs args)
+        {
+            bool confirm = await DisplayAlert("Confirm Delete", "Are you sure you want to delete this assessment?", "Yes", "No");
+
+            if (confirm)
+            {
+                int result = await App.DataBase.DeleteAssessmentAsync(assessment);
+                await Shell.Current.Navigation.PopAsync();
+            }
         }
     }
 }

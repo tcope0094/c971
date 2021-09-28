@@ -4,9 +4,51 @@
              x:Class="C971_PA.Views.AssessmentEditPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid
+            Padding="10,25,10,50"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">
+
+                <Label Text="Name:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+                <Entry Text="{Binding Name}"
+                       x:Name="nameEntry"
+                       TextChanged="OnFieldChanged"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Type:"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+
+                <Picker x:Name="assessmentTypePicker"
+                        SelectedIndexChanged="OnFieldChanged"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        FontSize="Medium"/>
+
+                <Label Text="Due Date: "
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+                <DatePicker Date="{Binding DueDate}"
+                            x:Name="dueDatePicker"
+                            DateSelected="OnFieldChanged"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+            </Grid>
+            <Button Text="Save"
+                    x:Name="saveButton"
+                    Clicked="OnSaveButtonClicked"
+                    IsEnabled="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

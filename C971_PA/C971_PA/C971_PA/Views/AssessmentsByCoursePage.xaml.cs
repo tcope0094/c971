@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace C971_PA.Views
     public partial class AssessmentsByCoursePage : ContentPage
     {
         Course course;
+        ObservableCollection<Assessment> assessments;
         
         public AssessmentsByCoursePage(Course course)
         {
@@ -28,14 +30,15 @@ namespace C971_PA.Views
             base.OnAppearing();
 
             this.BindingContext = course;
-            assessmentsListView.ItemsSource = await App.DataBase.GetAssessmentsByCourseAsync(course);
+            this.assessments = await App.DataBase.GetAssessmentsByCourseAsync(course);
+            assessmentsListView.ItemsSource = assessments;
 
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             Assessment assessment = (Assessment)args.SelectedItem;
-            await Shell.Current.Navigation.PushAsync(new AssessmentDetailPage(assessment));
+            await Shell.Current.Navigation.PushAsync(new AssessmentDetailPage(assessment.AssessmentKey));
         }
     }
 }

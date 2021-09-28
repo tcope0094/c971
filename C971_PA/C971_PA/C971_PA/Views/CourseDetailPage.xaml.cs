@@ -42,5 +42,16 @@ namespace C971_PA.Views
             await Navigation.PushModalAsync(new AssessmentsByCoursePage(course));
         }
 
+        private async void OnDeleteClicked(object sender, EventArgs args)
+        {
+            bool confirm = await DisplayAlert("Confirm Delete", "Are you sure you want to delete this course?", "Yes", "No");
+
+            if (confirm)
+            {
+                int result = await App.DataBase.DeleteCourseAsync(course);
+                await Shell.Current.Navigation.PopAsync();
+            }
+        }
+
     }
 }

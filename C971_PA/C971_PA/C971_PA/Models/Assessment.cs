@@ -12,13 +12,13 @@ namespace C971_PA.Models
         public int AssessmentKey { get; set; }
         [MaxLength(250), Unique, NotNull]
         public string Name { get; set; }
-        [MaxLength(1),NotNull]
+        [MaxLength(2),NotNull]
         public string Type { get; set; }
         [MaxLength(250),NotNull]
         public int CourseID { get; set; }
         [MaxLength(250), NotNull]
         public DateTime DueDate { get; set; }
 
-        public static readonly List<string> PossibleTypes = new List<string> { "O", "P" };
+        public static readonly List<string> PossibleTypes = new List<string> { "OA", "PA" };
     }
 }

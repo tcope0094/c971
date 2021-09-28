@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="C971_PA.Views.AssessmentDetailPage"
              Title="{Binding Name}">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit"
                      Clicked="OnEditClicked"/>
+        <ToolbarItem Text="Delete"
+                     Clicked="OnDeleteClicked"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -28,7 +31,6 @@
                        FontSize="Medium"/>
 
                 <Label Text="Type:"
-                       x:Name="assessmentTypePicker"
                        Grid.Column="0"
                        Grid.Row="2"
                        FontSize="Medium"/>
@@ -40,11 +42,11 @@
 
                 <Label Text="Due Date: "
                        Grid.Column="0"
-                       Grid.Row="4"
+                       Grid.Row="3"
                        FontSize="Medium"/>
                 <Label Text="{Binding DueDate}"
                        Grid.Column="1"
-                       Grid.Row="4"
+                       Grid.Row="3"
                        FontSize="Medium"/>
             </Grid>
         </StackLayout>
