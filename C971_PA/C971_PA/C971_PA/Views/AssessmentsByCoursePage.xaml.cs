@@ -40,5 +40,6 @@ namespace C971_PA.Views
             Assessment assessment = (Assessment)args.SelectedItem;
             await Shell.Current.Navigation.PushAsync(new AssessmentDetailPage(assessment.AssessmentKey));
         }
+
     }
 }

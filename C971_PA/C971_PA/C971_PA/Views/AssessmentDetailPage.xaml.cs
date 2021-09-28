@@ -47,11 +47,5 @@ namespace C971_PA.Views
                 await Shell.Current.Navigation.PopAsync();
             }
         }
-
-        protected override bool OnBackButtonPressed()
-        {
-            Shell.Current.Navigation.RemovePage(this);
-            return base.OnBackButtonPressed();
-        }
     }
 }

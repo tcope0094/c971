@@ -37,7 +37,8 @@ namespace C971_PA.Views
             Course course = (Course)args.SelectedItem;
             if (course != null)
             {
-                await Shell.Current.Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
+                await Shell.Current.GoToAsync($"course_detail?courseKey={course.CourseKey}");
+                //await Shell.Current.Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
             }
         }
 

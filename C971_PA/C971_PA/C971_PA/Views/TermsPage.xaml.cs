@@ -37,7 +37,7 @@ namespace C971_PA.Views
             if (args.SelectedItem != null)
             {
                 termsListView.SelectedItem = null;
-                await Shell.Current.Navigation.PushAsync(new TermDetailPage(term.TermKey));
+                Shell.Current.Navigation.PushAsync(new TermDetailPage(term.TermKey));
             }
         }
     }

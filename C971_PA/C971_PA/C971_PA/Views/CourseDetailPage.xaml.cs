@@ -12,21 +12,24 @@ using C971_PA.Models;
 namespace C971_PA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(CourseKey), "courseKey")]
     public partial class CourseDetailPage : ContentPage
     {
+        public int CourseKey { get; set; }
+
+
         Instructor instructor;
-        int courseKey;
         Course course;
         public CourseDetailPage(int courseKey)
         {
             InitializeComponent();
-            this.courseKey = courseKey;
+            //this.courseKey = courseKey;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            this.BindingContext = await App.DataBase.GetCourseAsync(this.courseKey);
+            this.BindingContext = await App.DataBase.GetCourseAsync(CourseKey);
             this.course = (Course)this.BindingContext;
             this.instructor = await App.DataBase.GetInstructorByCourseAsync((Course)this.BindingContext);
             instructorGrid.BindingContext = instructor;
@@ -56,6 +59,5 @@ namespace C971_PA.Views
                 Shell.Current.Navigation.RemovePage(this);
             }
         }
-
     }
 }
