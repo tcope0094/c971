@@ -1,6 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.CourseEditPage">
-    
+             x:Class="C971_PA.Views.CourseEditPage"
+             Title="{Binding Name}">
+
+    <StackLayout Orientation="Vertical"
+                 VerticalOptions="Center">
+
+
+        <Grid Padding="10,25,10,0"
+              >
+
+            <Label Text="Course Name:"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       FontSize="Small"/>
+            <Entry  Text="{Binding Name}"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    FontSize="Small"
+                    x:Name="nameEntry"
+                    HeightRequest="150"/>
+
+            <Label Text="Term Start:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       FontSize="Small"/>
+            <DatePicker Date="{Binding Start}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       FontSize="Small"
+                       x:Name="startDatePicker"/>
+
+            <Label Text="Term End: "
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Small"/>
+            <DatePicker Date="{Binding End}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="Small"
+                       x:Name="endDatePicker"
+                        />
+
+            <Label Text="Add Course: "
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       FontSize="Small"/>
+            <Picker x:Name="addCoursePicker"
+                    SelectedIndexChanged="OnCoursePickerSelected"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       FontSize="Small"/>
+
+        </Grid>
+
+        <Label Text="Courses in Term:"
+               Padding="10"
+               FontSize="Medium"/>
+        <StackLayout >
+            <ListView x:Name="termCoursesCollectionView"                        
+                        SelectionMode="Single"
+                        ItemSelected="OnTermCoursesSelectionChanged"
+                  Margin="10">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}"
+                            FontSize="Small"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+
+        <Button Text="Remove Courses"
+                x:Name="removeButton"
+                IsEnabled="False"
+                Clicked="OnRemoveCoursesButtonClicked"/>
+
+        <Button Text="Save"
+                x:Name="saveButton"
+                IsEnabled="False"
+                Clicked="OnSaveButtonClicked"/>
+    </StackLayout>
+
 </ContentPage>
