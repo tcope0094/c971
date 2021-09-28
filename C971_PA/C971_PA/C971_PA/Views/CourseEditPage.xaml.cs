@@ -15,7 +15,7 @@ namespace C971_PA.Views
     public partial class CourseEditPage : ContentPage
     {
         Instructor instructor;
-        List<Instructor> allInstructors;
+        List<string> allInstructors;
         Course course;
         public CourseEditPage(Course course, Instructor instructor)
         {
@@ -28,13 +28,13 @@ namespace C971_PA.Views
         {
             base.OnAppearing();
             this.BindingContext = this.course;
-            this.allInstructors = GetAllInstructorAndWait();
+            this.allInstructors = GetAllInstructorNames();
             instructorPicker.BindingContext = allInstructors;
 
 
             instructorPicker.ItemsSource = allInstructors;
-            var test = allInstructors.IndexOf(instructor);
-            instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor);
+            var test = allInstructors.IndexOf(instructor.Name);
+            instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
         }
 
         private static Instructor GetInstructorAndWait(Course course)
@@ -45,12 +45,17 @@ namespace C971_PA.Views
             return result;
         }
 
-        private static List<Instructor> GetAllInstructorAndWait()
+        private static List<string> GetAllInstructorNames()
         {
             var task = App.DataBase.GetAllInstructorsAsync();
             task.Wait();
             var result = task.Result;
-            return result;
+            List<string> returnList = new List<string>();
+            foreach (var item in result)
+            {
+                returnList.Add(item.Name);
+            }
+            return returnList;
         }
     }
 }
