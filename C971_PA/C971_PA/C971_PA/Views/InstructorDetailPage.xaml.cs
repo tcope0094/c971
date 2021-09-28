@@ -22,16 +22,13 @@ namespace C971_PA.Views
             this.instructorKey = instructorKey;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
+            this.instructor = await App.DataBase.GetInstructorAsync(instructorKey);
             this.BindingContext = instructor;
             
-            var task = App.DataBase.GetInstructorAsync(instructorKey);
-            task.Wait();
-
-            this.instructor = task.Result;
         }
         private async void OnEditClicked(object sender, EventArgs args)
         {
