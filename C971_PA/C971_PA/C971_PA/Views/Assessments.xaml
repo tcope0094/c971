@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="C971_PA.Views.Assessments"
+             Title="{Binding Name}">
+    
+    <ListView x:Name="assessmentsListView"
+                    SelectionMode="Single"                  
+                    ItemSelected="OnItemSelected">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell Height="30">
+                    <StackLayout Padding="5">
+                        <Label Text="{Binding Name}" 
+                           />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    
+</ContentPage>
