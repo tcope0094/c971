@@ -88,6 +88,12 @@ namespace C971_PA.Models
             return await _conn.UpdateAsync(course);
         }
 
+        public async Task<ObservableCollection<Assessment>> GetAssessmentsByCourseAsync(Course course)
+        {
+
+            List<Assessment> assessments = await _conn.Table<Assessment>().Where(a => a.CourseID == course.CourseKey).ToListAsync();
+            return new ObservableCollection<Assessment>(assessments);
+        }
 
 
 

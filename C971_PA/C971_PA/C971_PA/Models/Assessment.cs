@@ -18,5 +18,7 @@ namespace C971_PA.Models
         public int CourseID { get; set; }
         [MaxLength(250), NotNull]
         public DateTime DueDate { get; set; }
+
+        public static readonly List<string> PossibleTypes = new List<string> { "O", "P" };
     }
 }

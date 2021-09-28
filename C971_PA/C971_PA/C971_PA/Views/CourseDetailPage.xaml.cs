@@ -30,13 +30,16 @@ namespace C971_PA.Views
             this.course = (Course)this.BindingContext;
             this.instructor = await App.DataBase.GetInstructorByCourseAsync((Course)this.BindingContext);
             instructorGrid.BindingContext = instructor;
-            courseStatusPicker.ItemsSource = Course.PossibleStatuses;
-            courseStatusPicker.SelectedItem = course.Status;
         }
 
         public async void OnEditClicked(object sender, EventArgs args)
         {
             await Navigation.PushModalAsync(new CourseEditPage((Course)this.BindingContext));
+        }
+
+        private async void OnAssessmentsClicked(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new AssessmentsByCoursePage(course));
         }
 
     }

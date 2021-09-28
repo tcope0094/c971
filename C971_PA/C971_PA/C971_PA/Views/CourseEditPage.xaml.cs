@@ -14,9 +14,18 @@ namespace C971_PA.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CourseEditPage : ContentPage
     {
+        Course course;
         public CourseEditPage(Course course)
         {
             InitializeComponent();
+            this.course = course;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            this.BindingContext = course;
         }
     }
 }

@@ -5,6 +5,8 @@
              Title="{Binding Name}">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Assessments"
+                     Clicked="OnAssessmentsClicked"/>
         <ToolbarItem Text="Edit"
                      Clicked="OnEditClicked"/>
     </ContentPage.ToolbarItems>
@@ -22,7 +24,7 @@
                        Grid.Row="1"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
-                <Picker x:Name="courseStatusPicker"
+                <Label Text="{Binding Status}"
                        Grid.Column="1"
                        Grid.Row="1"
                        VerticalOptions="Center"

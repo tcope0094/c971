@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.AssessmentDetailPage">
+             x:Class="C971_PA.Views.AssessmentDetailPage"
+             Title="{Binding Name}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit"
+                     Clicked="OnEditClicked"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid
+            Padding="10,25,10,50"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">
+
+                <Label Text="Name:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+                <Label Text="{Binding Name}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Type:"
+                       x:Name="assessmentTypePicker"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+                
+                <Label Text="{Binding Type}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+
+                <Label Text="Due Date: "
+                       Grid.Column="0"
+                       Grid.Row="4"
+                       FontSize="Medium"/>
+                <Label Text="{Binding DueDate}"
+                       Grid.Column="1"
+                       Grid.Row="4"
+                       FontSize="Medium"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

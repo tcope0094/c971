@@ -84,6 +84,9 @@
     <FlyoutItem Title="Courses" Icon="icon_feed.png">
         <ShellContent Route="courses" ContentTemplate="{DataTemplate local:CoursesPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Assessments" Icon="icon_feed.png">
+        <ShellContent Route="assessments" ContentTemplate="{DataTemplate local:AssessmentsPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Configuration">
         <ShellContent Route="ConfigurationPage" ContentTemplate="{DataTemplate local:ConfigurationPage}" />
     </FlyoutItem>
