@@ -124,6 +124,11 @@ namespace C971_PA.Models
             return await _conn.DeleteAsync(instructor);
         }
 
+        public async Task<int> UpdateInstructorAsync(Instructor instructor)
+        {
+            return await _conn.UpdateAsync(instructor);
+        }
+
         public void CreateTables()
         {
             _syncConn.CreateTable<Term>();

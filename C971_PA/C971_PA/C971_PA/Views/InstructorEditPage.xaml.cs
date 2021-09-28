@@ -28,9 +28,11 @@ namespace C971_PA.Views
             saveButton.IsEnabled = false;
         }
 
-        private void OnSaveButtonClicked(object sender, EventArgs args)
-        {
+        private async void OnSaveButtonClicked(object sender, EventArgs args)
+        {   
+            int result = await App.DataBase.UpdateInstructorAsync(instructor);
 
+            await Shell.Current.Navigation.PopModalAsync();
         }
 
         private void FieldUpdated(object sender, EventArgs args)
