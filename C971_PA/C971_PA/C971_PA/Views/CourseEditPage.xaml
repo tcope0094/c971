@@ -29,7 +29,7 @@
                        Grid.Row="2"
                        VerticalOptions="CenterAndExpand"
                        FontSize="Medium"/>
-                <Picker 
+                <Picker x:Name="statusPicker"
                        Grid.Column="1"
                        Grid.Row="2"
                        VerticalOptions="Center"
@@ -73,8 +73,9 @@
             </Grid>
 
             <Label Text="Notes:"
+                   Padding="10"
                    FontSize="Medium"/>
-            <Label Text="{Binding Notes}"/>
+            <Editor Text="{Binding Notes}"/>
         </StackLayout>
     </ContentPage.Content>
 

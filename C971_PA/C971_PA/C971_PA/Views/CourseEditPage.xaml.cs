@@ -16,6 +16,7 @@ namespace C971_PA.Views
     {
         Instructor instructor;
         List<string> allInstructors;
+        List<string> allStatuses;
         Course course;
         public CourseEditPage(Course course, Instructor instructor)
         {
@@ -29,11 +30,15 @@ namespace C971_PA.Views
             base.OnAppearing();
             this.BindingContext = this.course;
             this.allInstructors = GetAllInstructorNames();
+            this.allStatuses = Course.PossibleStatuses;
+
+            statusPicker.BindingContext = course.Status;
             instructorPicker.BindingContext = allInstructors;
 
-
+            statusPicker.ItemsSource = allStatuses;
             instructorPicker.ItemsSource = allInstructors;
-            var test = allInstructors.IndexOf(instructor.Name);
+
+            statusPicker.SelectedIndex = allStatuses.IndexOf(course.Status);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
         }
 
