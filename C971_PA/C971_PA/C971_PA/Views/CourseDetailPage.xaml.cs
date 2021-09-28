@@ -20,7 +20,7 @@ namespace C971_PA.Views
 
         Instructor instructor;
         Course course;
-        public CourseDetailPage(int courseKey)
+        public CourseDetailPage()
         {
             InitializeComponent();
             //this.courseKey = courseKey;
