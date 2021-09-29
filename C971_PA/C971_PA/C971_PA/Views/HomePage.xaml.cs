@@ -27,14 +27,23 @@ namespace C971_PA.Views
         {
             base.OnAppearing();
 
+            var terms = await App.DataBase.GetAllTermsAsync();
+            
+
             coursesDue = await App.DataBase.GetCoursesDueAsync(7);
             assessmentsDue = await App.DataBase.GetAssessmentsDueAsync(7);
-            
+            term = await App.DataBase.GetCurrentTerm();
+            currentCourses = new List<Course>(await App.DataBase.GetCoursesInTermAsync(term));
+
             coursesDueListView.ItemsSource = coursesDue;
             coursesDueListView.BindingContext = coursesDue;
 
             assessmentsDueListView.ItemsSource = assessmentsDue;
             assessmentsDueListView.BindingContext = assessmentsDue;
+
+            currentCoursesListView.ItemsSource = currentCourses;
+            currentCoursesListView.BindingContext = currentCourses;
+
         }
 
         private async void OnAssessmentSelected(object sender, EventArgs args)
