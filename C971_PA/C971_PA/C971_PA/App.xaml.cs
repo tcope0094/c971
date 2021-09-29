@@ -1,10 +1,14 @@
 ﻿using C971_PA.Views;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SQLite;
 using System.Text.RegularExpressions;
 using System.Net.Mail;
+using Plugin.LocalNotifications;
+using C971_PA.Models;
+using System.Threading.Tasks;
 
 namespace C971_PA
 {
@@ -26,11 +30,13 @@ namespace C971_PA
             }
 
             MainPage = new AppShell();
+            
 
         }
 
         protected override void OnStart()
         {
+            TriggerNotifications();
         }
 
         protected override void OnSleep()
@@ -39,6 +45,7 @@ namespace C971_PA
 
         protected override void OnResume()
         {
+            TriggerNotifications();
         }
 
         public static bool IsValidEmail(string email)
@@ -65,6 +72,39 @@ namespace C971_PA
             else
             {
                 return true;
+            }
+        }
+
+        public static async Task TriggerNotifications()
+        {
+            if (Settings.AssessmentDueDateNotifications)
+            {
+                List<Assessment> assessments = await App.DataBase.GetAssessmentsDueAsync(7);
+                string message = "";
+                if (assessments.Count > 0)
+                {
+                    foreach (var item in assessments)
+                    {
+                        message += $"{Environment.NewLine}{item.Name}: " + $"{item.DueDate}";
+                    }
+
+                    CrossLocalNotifications.Current.Show("Assessments Due Soon", message, 0);
+                }
+
+            }
+            if (Settings.CourseDueDateNotifications)
+            {
+                List<Course> courses = await App.DataBase.GetCoursesDueAsync(7);
+                string message = "";
+                if (courses.Count > 0)
+                {
+                    foreach (var item in courses)
+                    {
+                        message += $"{Environment.NewLine}{item.Name}: " + $"{item.DueDate}";
+                    }
+
+                    CrossLocalNotifications.Current.Show("Courses Due Soon", message, 0);
+                }
             }
         }
     }

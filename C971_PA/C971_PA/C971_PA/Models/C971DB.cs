@@ -167,6 +167,22 @@ namespace C971_PA.Models
             return await _conn.InsertAsync(instructor);
         }
 
+        public async Task<List<Course>> GetCoursesDueAsync(int days)
+        {
+            DateTime dateInterval = DateTime.Now.AddDays(days);
+            return await _conn.Table<Course>().Where(c => c.DueDate > DateTime.Today && c.DueDate <= dateInterval).ToListAsync();
+        }
+
+        public async Task<List<Assessment>> GetAssessmentsDueAsync(int days)
+        {
+            DateTime dateInterval = DateTime.Now.AddDays(days);
+            return await _conn.Table<Assessment>().Where(a => a.DueDate > DateTime.Today && a.DueDate <= dateInterval).ToListAsync();
+        }
+
+        public async Task<Term> GetCurrentTerm()
+        {
+            return await _conn.Table<Term>().Where(t => t.Start >= DateTime.Today && t.End <= DateTime.Today).FirstAsync();
+        }
 
 
         public void CreateTables()

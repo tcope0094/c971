@@ -1,13 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.ConfigurationPage">
-    <StackLayout Orientation="Horizontal"
-                 HorizontalOptions="Center"
-                 VerticalOptions="CenterAndExpand">
+             x:Class="C971_PA.Views.ConfigurationPage"
+             Title="Application Settings">
+    <StackLayout Orientation="Vertical">
 
-        <Button Text="Clear Database"
-                Clicked="OnClearDatabaseButtonClicked"/>
+        <Label Text="Notification Settings"
+               FontSize="Large"
+               FontAttributes="Bold"
+               Margin="10"/>
+        <Grid
+            Padding="15">
+            <Label Text="Course Due Date Notifications"                   
+                   Grid.Column="0"
+                   Grid.Row="0"/>
+            <Switch x:Name="courseSwitch"
+                    Toggled="OnCourseSwitchToggled"
+                    Grid.Column="1"
+                    Grid.Row="0"/>
 
+            <Label Text="Assessment Due Date Notifications"
+                   Grid.Column="0"
+                   Grid.Row="1"/>
+            <Switch x:Name="assessmentSwitch"
+                    Toggled="OnAssessmentSwitchToggled"
+                    Grid.Column="1"
+                    Grid.Row="1"/>
+
+        </Grid>
+
+
+        <Button Text="Reset Database"
+                Clicked="OnClearDatabaseButtonClicked"
+                HorizontalOptions="Center"
+                Margin="50"/>
+        
     </StackLayout>
 </ContentPage>

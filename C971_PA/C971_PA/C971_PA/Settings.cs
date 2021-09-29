@@ -12,5 +12,17 @@ namespace C971_PA
             get { return Preferences.Get(nameof(FirstRun), true); }
             set { Preferences.Set(nameof(FirstRun), value); }
         }
+
+        public static bool CourseDueDateNotifications
+        {
+            get { return Preferences.Get(nameof(CourseDueDateNotifications), true); }
+            set { Preferences.Set(nameof(CourseDueDateNotifications), value); }
+        }
+
+        public static bool AssessmentDueDateNotifications
+        {
+            get { return Preferences.Get(nameof(AssessmentDueDateNotifications), true); }
+            set { Preferences.Set(nameof(AssessmentDueDateNotifications), value); }
+        }
     }
 }
