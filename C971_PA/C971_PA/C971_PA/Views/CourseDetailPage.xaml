@@ -71,8 +71,6 @@
             </Grid>
             <Grid x:Name="instructorGrid"
             Padding="10,10,10,10"
-            RowSpacing="25"            
-            ColumnSpacing="10"
             MinimumHeightRequest="100">
 
                 <Label Text="Instructor Name: "
@@ -112,12 +110,14 @@
                    FontSize="Medium"
                    Padding="10"/>
             <ScrollView>
-                <Label Text="{Binding Notes}"/>
+                <Label Text="{Binding Notes}"
+                       Padding="10"
+                       FontSize="Medium"/>
             </ScrollView>
             <Button Text="Share Notes"
-                    FontSize="Small"
-                    HeightRequest="25"
-                    HorizontalOptions="Center"
+                    FontSize="Caption"
+                    HeightRequest="33"
+                    HorizontalOptions="End"
                     x:Name="shareNotesButton"
                     Clicked="OnShareNotesButtonClicked"/>
         </StackLayout>

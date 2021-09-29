@@ -40,6 +40,10 @@ namespace C971_PA.Views
             {
                 shareNotesButton.IsEnabled = false;
             }
+            else
+            {
+                shareNotesButton.IsEnabled = true;
+            }
         }
 
         public async void OnEditClicked(object sender, EventArgs args)
@@ -76,8 +80,9 @@ namespace C971_PA.Views
         {
             await Share.RequestAsync(new ShareTextRequest
             {
-                Text = notes,
-                Title = $"{courseName} Notes"
+                Text = "Notes:" + Environment.NewLine + notes,
+                Title = $"{courseName} Notes",
+                Subject = $"{courseName} Notes"
             }); 
         }
     }
