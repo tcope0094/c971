@@ -33,6 +33,7 @@ namespace C971_PA.Models
         public int CourseStartNotifications { get; set; }
         [MaxLength(1)]
         public int CourseDueNotifications { get; set; }
+
         public static readonly List<string> PossibleStatuses = new List<string>{ "In Progress", "Plan to Take", "Completed", "Dropped" };
 
         public override string ToString()

@@ -44,10 +44,7 @@ namespace C971_PA.Views
             statusPicker.SelectedIndex = allStatuses.IndexOf(course.Status);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
 
-            courseStartSwitch.BindingContext = Settings.CourseStartNotifications;
-            courseDueSwitch.BindingContext = Settings.CourseDueDateNotifications;
-
-            //SetSwitches();
+            SetSwitches();
             loaded = true;
         }
 
