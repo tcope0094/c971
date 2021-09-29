@@ -7,8 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Grid
-            Padding="10,25,10,50"
-            RowSpacing="25"            
+            Padding="10,25,10,50"           
             ColumnSpacing="10"
             MinimumHeightRequest="100">
                 
@@ -80,6 +79,22 @@
                         Grid.Column="1"
                         Grid.Row="6"
                         FontSize="Medium"/>
+
+                <Label Text="Course Start Notifications"
+                       Grid.Column="0"
+                       Grid.Row="7"
+                       FontSize="Medium"/>
+                <Switch x:Name="courseStartSwitch"
+                        Grid.Column="1"
+                        Grid.Row="7"/>
+
+                <Label Text="Course Due Notifications"
+                       Grid.Column="0"
+                       Grid.Row="8"
+                       FontSize="Medium"/>
+                <Switch x:Name="courseDueSwitch"
+                        Grid.Column="1"
+                        Grid.Row="8"/>
             </Grid>
 
             <Label Text="Notes:"

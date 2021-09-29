@@ -43,7 +43,24 @@ namespace C971_PA.Views
 
             statusPicker.SelectedIndex = allStatuses.IndexOf(course.Status);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
+
+            SetSwitches();
             loaded = true;
+        }
+
+        private void SetSwitches()
+        {
+            courseStartSwitch.IsToggled = false;
+            courseDueSwitch.IsToggled = false;
+
+            if (Settings.CourseStartNotifications)
+            {
+                courseStartSwitch.IsToggled = true;
+            }
+            if (Settings.CourseDueDateNotifications)
+            {
+                courseDueSwitch.IsToggled = true;
+            }
         }
 
         private async Task<List<string>> GetAllInstructorNames()
@@ -103,6 +120,29 @@ namespace C971_PA.Views
             {
                 saveButton.IsEnabled = true;
             }
+        }
+        private async void OnCourseDueSwitchToggled(object sender, EventArgs args)
+        {
+            if (courseDueSwitch.IsToggled)
+            {
+                Settings.CourseDueDateNotifications = true;
+            }
+            else
+            {
+                Settings.CourseDueDateNotifications = false;
+            }
+        }
+        private async void OnCourseStartSwitchToggled(object sender, EventArgs args)
+        {
+            if (courseStartSwitch.IsToggled)
+            {
+                Settings.CourseStartNotifications = true;
+            }
+            else
+            {
+                Settings.CourseStartNotifications = false;
+            }
+
         }
     }
 }
