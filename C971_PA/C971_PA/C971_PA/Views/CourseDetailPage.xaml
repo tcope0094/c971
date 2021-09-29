@@ -114,6 +114,12 @@
             <ScrollView>
                 <Label Text="{Binding Notes}"/>
             </ScrollView>
+            <Button Text="Share Notes"
+                    FontSize="Small"
+                    HeightRequest="25"
+                    HorizontalOptions="Center"
+                    x:Name="shareNotesButton"
+                    Clicked="OnShareNotesButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

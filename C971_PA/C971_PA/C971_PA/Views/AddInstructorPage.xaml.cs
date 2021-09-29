@@ -64,11 +64,11 @@ namespace C971_PA.Views
         {
             if (nameEntry.Text != null && emailEntry.Text != null && phoneEntry.Text != null)
             {
-                saveButton.IsEnabled = true;
+                addButton.IsEnabled = true;
             }
             else
             {
-                saveButton.IsEnabled = false;
+                addButton.IsEnabled = false;
             }
         }
     }

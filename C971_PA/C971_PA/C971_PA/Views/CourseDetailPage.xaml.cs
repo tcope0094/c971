@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 using C971_PA.Models;
 using System.Windows.Input;
@@ -35,6 +36,10 @@ namespace C971_PA.Views
             this.course = (Course)this.BindingContext;
             this.instructor = await App.DataBase.GetInstructorByCourseAsync((Course)this.BindingContext);
             instructorGrid.BindingContext = instructor;
+            if (string.IsNullOrWhiteSpace(course.Notes))
+            {
+                shareNotesButton.IsEnabled = false;
+            }
         }
 
         public async void OnEditClicked(object sender, EventArgs args)
@@ -62,5 +67,18 @@ namespace C971_PA.Views
             }
         }
 
+        private async void OnShareNotesButtonClicked(object sender, EventArgs args)
+        {
+            await ShareNotes(course.Name, course.Notes);
+        }
+
+        private async Task ShareNotes(string courseName, string notes)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Text = notes,
+                Title = $"{courseName} Notes"
+            }); 
+        }
     }
 }
