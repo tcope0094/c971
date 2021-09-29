@@ -37,13 +37,27 @@ namespace C971_PA.Views
 
         private async void OnAddButtonClicked(object sender, EventArgs args)
         {
-            Course course = (Course)BindingContext;
-            Instructor instructor = await App.DataBase.GetInstructorByNameAsync((string)instructorPicker.SelectedItem);
+            try
+            {
+                Course course = (Course)BindingContext;
+                Instructor instructor = await App.DataBase.GetInstructorByNameAsync((string)instructorPicker.SelectedItem);
 
-            course.Status = (string)statusPicker.SelectedItem;
-            course.InstructorID = instructor.InstructorKey;
-            await App.DataBase.AddNewCourseAsync(course);
-            await Shell.Current.Navigation.PushModalAsync(new AddAssessmentsPage(course));
+                course.Status = (string)statusPicker.SelectedItem;
+                course.InstructorID = instructor.InstructorKey;
+                await App.DataBase.AddNewCourseAsync(course);
+                await Shell.Current.Navigation.PushModalAsync(new AddAssessmentsPage(course));
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Course name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
         }
 
         private async void ValidateFields(object sender, EventArgs args)

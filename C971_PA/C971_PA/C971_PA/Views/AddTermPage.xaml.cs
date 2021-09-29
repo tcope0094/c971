@@ -22,9 +22,23 @@ namespace C971_PA.Views
 
         private async void OnAddButtonClicked(object sender, EventArgs args)
         {
-            Term term = (Term)BindingContext;
-            await App.DataBase.AddNewTermAsync(term);
-            await Navigation.PopModalAsync();
+            try
+            {
+                Term term = (Term)BindingContext;
+                await App.DataBase.AddNewTermAsync(term);
+                await Navigation.PopModalAsync();
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Term name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
         }
     }
 }

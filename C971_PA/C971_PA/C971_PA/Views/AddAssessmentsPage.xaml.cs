@@ -23,17 +23,15 @@ namespace C971_PA.Views
 
         private async void OnAddButtonClicked(object sender, EventArgs args)
         {
+            Assessment pa = new Assessment();
+            Assessment oa = new Assessment();
 
             if (oaDueDatePicker.Date > course.End || oaDueDatePicker.Date < course.Start || paDueDatePicker.Date > course.End || paDueDatePicker.Date < course.Start)
             {
                 await DisplayAlert("Error", "Assessment due date must be between course start date and end date", "OK");
             }
-
             else
             {
-                Assessment pa = new Assessment();
-                Assessment oa = new Assessment();
-
                 pa.CourseID = course.CourseKey;
                 pa.DueDate = paDueDatePicker.Date;
                 pa.Name = newPaName.Text;
@@ -43,15 +41,45 @@ namespace C971_PA.Views
                 oa.DueDate = oaDueDatePicker.Date;
                 oa.Name = newOaName.Text;
                 oa.Type = "OA";
-
-                int paResult = await App.DataBase.AddNewAssessmentAsync(pa);
-                int oaResult = await App.DataBase.AddNewAssessmentAsync(oa);
-
-                Shell.Current.Navigation.PopToRootAsync();
-
             }
 
+            try
+            {
+                int paResult = await App.DataBase.AddNewAssessmentAsync(pa);
 
+                await Shell.Current.Navigation.PopToRootAsync();
+
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Performance Assessment name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
+
+            try
+            {
+                int oaResult = await App.DataBase.AddNewAssessmentAsync(oa);
+
+                await Shell.Current.Navigation.PopToRootAsync();
+
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Objective Assessment name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
         }
 
         private async void ValidateFields(object sender, EventArgs args)

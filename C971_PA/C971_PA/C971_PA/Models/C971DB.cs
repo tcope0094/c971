@@ -162,6 +162,11 @@ namespace C971_PA.Models
             return await _conn.InsertAsync(assessment);
         }
 
+        public async Task<int> AddNewInstructorAsync(Instructor instructor)
+        {
+            return await _conn.InsertAsync(instructor);
+        }
+
 
 
         public void CreateTables()

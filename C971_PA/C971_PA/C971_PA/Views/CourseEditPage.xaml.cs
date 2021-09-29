@@ -72,15 +72,29 @@ namespace C971_PA.Views
 
         private async void OnSaveButtonClicked(object sender, EventArgs args)
         {
-            if (newInstructor != null)
+            try
             {
-                course.InstructorID = newInstructor.InstructorKey;
+                if (newInstructor != null)
+                {
+                    course.InstructorID = newInstructor.InstructorKey;
+                }
+                course.Status = (string)statusPicker.SelectedItem;
+
+                var result = App.DataBase.UpdateCourseAsync(course);
+
+                await Shell.Current.Navigation.PopModalAsync();
             }
-            course.Status = (string)statusPicker.SelectedItem;
-
-            var result = App.DataBase.UpdateCourseAsync(course);
-
-            await Shell.Current.Navigation.PopModalAsync();
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Course name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
         }
 
         private void OnFieldChanged(object sender, EventArgs args)

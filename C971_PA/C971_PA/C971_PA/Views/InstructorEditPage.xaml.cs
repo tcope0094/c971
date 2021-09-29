@@ -29,15 +29,52 @@ namespace C971_PA.Views
         }
 
         private async void OnSaveButtonClicked(object sender, EventArgs args)
-        {   
-            int result = await App.DataBase.UpdateInstructorAsync(instructor);
+        {
+            string message = "";
+            bool validEmail = App.IsValidEmail(emailEntry.Text);
+            bool validPhoneNumber = App.IsValidPhoneNumber(phoneEntry.Text);
 
-            await Shell.Current.Navigation.PopModalAsync();
+            if (!validEmail)
+            {
+                message += Environment.NewLine + "Email is invalid";
+            }
+            if (!validPhoneNumber)
+            {
+                message += Environment.NewLine + "Phone Number is invalid";
+            }
+            if (message != "")
+            {
+                await DisplayAlert("Error", message, "OK");
+            }
+            try
+            {
+                int result = await App.DataBase.UpdateInstructorAsync(instructor);
+
+                await Shell.Current.Navigation.PopModalAsync();
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Instructor name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
         }
 
-        private void FieldUpdated(object sender, EventArgs args)
+        private void ValidateFields(object sender, EventArgs args)
         {
-            saveButton.IsEnabled = true;
+            if (nameEntry.Text != null && emailEntry.Text != null && phoneEntry.Text != null)
+            {
+                saveButton.IsEnabled = true;
+            }
+            else
+            {
+                saveButton.IsEnabled = false;
+            }
         }
     }
 }

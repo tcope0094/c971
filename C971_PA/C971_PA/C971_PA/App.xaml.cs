@@ -3,6 +3,8 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SQLite;
+using System.Text.RegularExpressions;
+using System.Net.Mail;
 
 namespace C971_PA
 {
@@ -37,6 +39,33 @@ namespace C971_PA
 
         protected override void OnResume()
         {
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        public static bool IsValidPhoneNumber(string phoneNumber)
+        {
+            string pattern = @"^(\(?[0-9]{3}\)?|[0-9]{3}-)[0-9]{3}-?[0-9]{4}$";
+
+            if (!Regex.Match(phoneNumber, pattern).Success)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

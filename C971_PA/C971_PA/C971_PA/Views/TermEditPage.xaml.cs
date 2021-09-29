@@ -61,32 +61,47 @@ namespace C971_PA.Views
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
         {
-            App.DataBase.UpdateTermAsync((Term)this.BindingContext);
-            if (coursesToAdd.Count > 0)
+            try
             {
-                foreach (var item in coursesToAdd)
+                App.DataBase.UpdateTermAsync((Term)this.BindingContext);
+                if (coursesToAdd.Count > 0)
                 {
-                    if (item == null)
+                    foreach (var item in coursesToAdd)
                     {
-                        continue;
+                        if (item == null)
+                        {
+                            continue;
+                        }
+                        var temp = coursesToAdd;
+                        item.TermID = this.term.TermKey;
+                        int result = await App.DataBase.UpdateCourseAsync(item);
                     }
-                    var temp = coursesToAdd;
-                    item.TermID = this.term.TermKey;
-                    int result = await App.DataBase.UpdateCourseAsync(item);
+                }
+                if (coursesToRemove.Count > 0)
+                {
+                    foreach (var item in coursesToRemove)
+                    {
+                        if (item == null)
+                        {
+                            continue;
+                        }
+                        int result = await App.DataBase.RemoveCoursesFromTermAsync(item);
+                    }
+                }
+                await Shell.Current.Navigation.PopModalAsync();
+
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Term name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
                 }
             }
-            if (coursesToRemove.Count > 0)
-            {
-                foreach (var item in coursesToRemove)
-                {
-                    if (item == null)
-                    {
-                        continue;
-                    }
-                    int result = await App.DataBase.RemoveCoursesFromTermAsync(item);
-                }
-            }
-            Shell.Current.Navigation.PopModalAsync();
         }
 
         public async void OnRemoveCoursesButtonClicked(object sender, EventArgs args)

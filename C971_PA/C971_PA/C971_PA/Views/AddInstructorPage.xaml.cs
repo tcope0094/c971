@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using C971_PA.Models;
+
 namespace C971_PA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,11 +17,59 @@ namespace C971_PA.Views
         public AddInstructorPage()
         {
             InitializeComponent();
+            this.BindingContext = new Instructor();
         }
 
         private async void OnAddButtonClicked(object sender, EventArgs args)
         {
+            string message = "";
+            bool validEmail = App.IsValidEmail(emailEntry.Text);
+            bool validPhoneNumber = App.IsValidPhoneNumber(phoneEntry.Text);
 
+            if (!validEmail)
+            {
+                message += Environment.NewLine + "Email is invalid";
+            }
+            if (!validPhoneNumber)
+            {
+                message += Environment.NewLine + "Phone Number is invalid";
+            }
+            if (message != "")
+            {
+                await DisplayAlert("Error", message, "OK");
+            }
+            else
+            {
+                try
+                {
+                    Instructor instructor = (Instructor)BindingContext;
+                    await App.DataBase.AddNewInstructorAsync(instructor);
+                    await Shell.Current.Navigation.PopModalAsync();
+                }
+                catch (SQLite.SQLiteException e)
+                {
+                    if ((e.Message).Contains("UNIQUE"))
+                    {
+                        await DisplayAlert("Error", "Instructor name already exists", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", e.Message, "OK");
+                    }
+                }
+            }
+        }
+
+        private async void ValidateFields(object sender, EventArgs args)
+        {
+            if (nameEntry.Text != null && emailEntry.Text != null && phoneEntry.Text != null)
+            {
+                saveButton.IsEnabled = true;
+            }
+            else
+            {
+                saveButton.IsEnabled = false;
+            }
         }
     }
 }

@@ -43,10 +43,24 @@ namespace C971_PA.Views
 
         private async void OnSaveButtonClicked(object sender, EventArgs args)
         {
-            assessment.Type = assessmentTypePicker.SelectedItem.ToString();
-            int result = await App.DataBase.UpdateAssessmentAsync(assessment);
+            try
+            {
+                assessment.Type = assessmentTypePicker.SelectedItem.ToString();
+                int result = await App.DataBase.UpdateAssessmentAsync(assessment);
 
-            await Shell.Current.Navigation.PopModalAsync();
+                await Shell.Current.Navigation.PopModalAsync();
+            }
+            catch (SQLite.SQLiteException e)
+            {
+                if ((e.Message).Contains("UNIQUE"))
+                {
+                    await DisplayAlert("Error", "Assessment name already exists", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", e.Message, "OK");
+                }
+            }
         }
     }
 }

@@ -17,7 +17,7 @@
                        FontSize="Medium"/>
                 <Entry Text="{Binding Name}"
                        x:Name="nameEntry"
-                       TextChanged="FieldUpdated"
+                       TextChanged="ValidateFields"
                        Grid.Column="1"
                        Grid.Row="1"
                        VerticalOptions="Center"
@@ -30,7 +30,7 @@
 
                 <Entry Text="{Binding Phone}"
                        x:Name="phoneEntry"
-                       TextChanged="FieldUpdated"
+                       TextChanged="ValidateFields"
                        Grid.Column="1"
                        Grid.Row="2"
                        FontSize="Medium"/>
@@ -41,7 +41,7 @@
                        FontSize="Medium"/>
                 <Entry Text="{Binding Email}"
                        x:Name="emailEntry"
-                       TextChanged="FieldUpdated"
+                       TextChanged="ValidateFields"
                        Grid.Column="1"
                        Grid.Row="3"
                        FontSize="Medium"/>
