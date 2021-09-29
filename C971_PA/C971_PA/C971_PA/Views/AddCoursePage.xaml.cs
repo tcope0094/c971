@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using C971_PA.Models;
+
 namespace C971_PA.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,6 +17,50 @@ namespace C971_PA.Views
         public AddCoursePage()
         {
             InitializeComponent();
+            this.BindingContext = new Course();
+
+            startDatePicker.Date = DateTime.Now;
+            endDatePicker.Date = DateTime.Now;
+            dueDatePicker.Date = DateTime.Now;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            statusPicker.ItemsSource = Course.PossibleStatuses;
+            statusPicker.SelectedIndex = 1;
+
+            instructorPicker.ItemsSource = await App.DataBase.GetAllInstructorNamesAsync();
+
+            addButton.IsEnabled = false;
+        }
+
+        private async void OnAddButtonClicked(object sender, EventArgs args)
+        {
+            Course course = (Course)BindingContext;
+            Instructor instructor = await App.DataBase.GetInstructorByNameAsync((string)instructorPicker.SelectedItem);
+
+            course.Status = (string)statusPicker.SelectedItem;
+            course.InstructorID = instructor.InstructorKey;
+            await App.DataBase.AddNewCourseAsync(course);
+            await Shell.Current.Navigation.PushModalAsync(new AddAssessmentsPage(course));
+        }
+
+        private async void ValidateFields(object sender, EventArgs args)
+        {
+            if (newCourseName != null && newCourseDescription != null && instructorPicker.SelectedIndex != -1 && startDatePicker.Date <= endDatePicker.Date && startDatePicker.Date <= dueDatePicker.Date)
+            {
+                addButton.IsEnabled = true;
+            }
+            else
+            {
+                addButton.IsEnabled = false;
+            }
+        }
+
+        private async void OnNewAssessmentClicked(object sender, EventArgs args)
+        {
+            await Shell.Current.Navigation.PushModalAsync(new AddAssessmentsPage(((Course)BindingContext)));
         }
     }
 }

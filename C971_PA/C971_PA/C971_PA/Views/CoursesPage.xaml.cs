@@ -28,7 +28,7 @@ namespace C971_PA.Views
 
         async void OnNewClicked(object sender, EventArgs args)
         {
-            await Navigation.PushModalAsync(new AddTermPage());
+            await Navigation.PushAsync(new AddCoursePage());
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

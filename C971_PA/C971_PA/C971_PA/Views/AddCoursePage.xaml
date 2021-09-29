@@ -1,12 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.AddCoursePage">
+             x:Class="C971_PA.Views.AddCoursePage"
+             Title="Add Course Page">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical"
+                     VerticalOptions="CenterAndExpand"
+                     Padding="10,10,10,10">
+
+            <Entry x:Name="newCourseName"
+                    Text="{Binding Name}"
+                    Placeholder="Name of New Course"
+                    HeightRequest="50"
+                   TextChanged="ValidateFields"/>
+            <Editor x:Name="newCourseDescription"
+                    Text="{Binding Description}"
+                    Placeholder="Description of New Course"
+                    HeightRequest="50"
+                    TextChanged="ValidateFields"/>
+
+            <Grid>
+                <Label Text="Start Date"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <DatePicker Date="{Binding Start}"
+                            x:Name="startDatePicker"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            DateSelected="ValidateFields"/>
+
+                <Label Text="End Date"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <DatePicker Date="{Binding End}"
+                            x:Name="endDatePicker"
+                            Grid.Column="1"
+                            Grid.Row="1"       
+                            DateSelected="ValidateFields"/>
+
+                <Label Text="Due Date"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <DatePicker Date="{Binding DueDate}"
+                            x:Name="dueDatePicker"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            DateSelected="ValidateFields"/>
+
+                <Label Text="Status"
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Picker x:Name="statusPicker"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        SelectedIndexChanged="ValidateFields"/>
+
+                <Label Text="Instructor"
+                       Grid.Column="0"
+                       Grid.Row="4"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+                <Picker x:Name="instructorPicker"
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        SelectedIndexChanged="ValidateFields"/>
+
+            </Grid>
+
+            <StackLayout Orientation="Horizontal">
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+            </StackLayout>
+
+            <Button Text="Add"
+                    x:Name="addButton"
+                    Clicked="OnAddButtonClicked"
+                    IsEnabled="False"/>
+
         </StackLayout>
-    </ContentPage.Content>
+        </ContentPage.Content>
 </ContentPage>

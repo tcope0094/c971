@@ -32,7 +32,7 @@ namespace C971_PA.Models
         }
         public async Task<List<Course>> GetAllCoursesAsync()
         {
-            return await _conn.Table<Course>().ToListAsync();
+            return await _conn.Table<Course>().OrderBy(c => c.Name).ToListAsync();
         }
 
         public async Task<List<Assessment>> GetAllAssesmentsAsync()
@@ -138,6 +138,31 @@ namespace C971_PA.Models
         {
             return _conn.Table<Course>().Where(c => c.InstructorID == instructor.InstructorKey).ToListAsync();
         }
+
+        public async Task<int> AddNewCourseAsync(Course course)
+        {
+            return await _conn.InsertAsync(course);
+        }
+
+        public async Task<List<string>> GetAllInstructorNamesAsync()
+        {
+            var instructors = await GetAllInstructorsAsync();
+            List<string> result = new List<string>();
+
+            foreach (var item in instructors)
+            {
+                result.Add(item.Name);
+            }
+
+            return result;
+        }
+
+        public async Task<int> AddNewAssessmentAsync(Assessment assessment)
+        {
+            return await _conn.InsertAsync(assessment);
+        }
+
+
 
         public void CreateTables()
         {

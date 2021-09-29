@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AddAssessmentsPage.xaml.cs">
+      <DependentUpon>AddAssessmentsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\AssessmentsByCoursePage.xaml.cs">
       <DependentUpon>AssessmentsByCoursePage.xaml</DependentUpon>
     </Compile>
@@ -36,7 +39,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\AddAssessmentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AddCoursePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddInstructorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AddTermPage.xaml">

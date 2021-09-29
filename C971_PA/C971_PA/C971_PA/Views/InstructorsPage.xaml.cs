@@ -34,5 +34,10 @@ namespace C971_PA.Views
                 await Shell.Current.Navigation.PushAsync(new InstructorDetailPage(instructor.InstructorKey));
             }
         }
+
+        private async void OnNewButtonClicked(object sender, EventArgs args)
+        {
+            await Shell.Current.Navigation.PushModalAsync(new AddInstructorPage());
+        }
     }
 }
