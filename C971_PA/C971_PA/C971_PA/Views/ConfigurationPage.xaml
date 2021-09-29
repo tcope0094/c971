@@ -14,8 +14,8 @@
             <Label Text="Course Due Date Notifications"                   
                    Grid.Column="0"
                    Grid.Row="0"/>
-            <Switch x:Name="courseSwitch"
-                    Toggled="OnCourseSwitchToggled"
+            <Switch x:Name="courseDueSwitch"
+                    Toggled="OnCourseDueSwitchToggled"
                     Grid.Column="1"
                     Grid.Row="0"/>
 
@@ -26,6 +26,14 @@
                     Toggled="OnAssessmentSwitchToggled"
                     Grid.Column="1"
                     Grid.Row="1"/>
+
+            <Label Text="Course Start Notifications"
+                   Grid.Column="0"
+                   Grid.Row="2"/>
+            <Switch x:Name="courseStartSwitch"
+                    Toggled="OnCourseStartSwitchToggled"
+                    Grid.Column="1"
+                    Grid.Row="2"/>
 
         </Grid>
 

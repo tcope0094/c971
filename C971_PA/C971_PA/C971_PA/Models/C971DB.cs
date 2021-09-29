@@ -184,6 +184,12 @@ namespace C971_PA.Models
             return await _conn.Table<Term>().Where(t => t.Start <= DateTime.Today && t.End >= DateTime.Today).FirstAsync();
         }
 
+        public async Task<List<Course>> GetUpcomingCoursesAsync(int days)
+        {
+            DateTime dateInterval = DateTime.Now.AddDays(days);
+            return await _conn.Table<Course>().Where(c => c.Start <= dateInterval && c.Start > DateTime.Today).ToListAsync();
+        }
+
 
         public void CreateTables()
         {

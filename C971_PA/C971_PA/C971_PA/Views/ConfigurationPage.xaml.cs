@@ -23,11 +23,11 @@ namespace C971_PA.Views
 
             if (Settings.CourseDueDateNotifications)
             {
-                courseSwitch.IsToggled = true;
+                courseDueSwitch.IsToggled = true;
             }
             else
             {
-                courseSwitch.IsToggled = false;
+                courseDueSwitch.IsToggled = false;
             }
 
             if (Settings.AssessmentDueDateNotifications)
@@ -46,9 +46,9 @@ namespace C971_PA.Views
             Settings.FirstRun = true;
         }
 
-        private async void OnCourseSwitchToggled(object sender, EventArgs args)
+        private async void OnCourseDueSwitchToggled(object sender, EventArgs args)
         {
-            if (courseSwitch.IsToggled == true)
+            if (courseDueSwitch.IsToggled == true)
             {
                 Settings.CourseDueDateNotifications = true;
             }
@@ -66,6 +66,18 @@ namespace C971_PA.Views
             else
             {
                 Settings.AssessmentDueDateNotifications = false;
+            }
+        }
+
+        private async void OnCourseStartSwitchToggled(object sender, EventArgs args)
+        {
+            if (courseStartSwitch.IsToggled == true)
+            {
+                Settings.CourseStartNotifications = true;
+            }
+            else
+            {
+                Settings.CourseStartNotifications = false;
             }
         }
     }

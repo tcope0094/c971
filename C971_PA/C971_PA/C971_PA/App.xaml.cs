@@ -100,7 +100,20 @@ namespace C971_PA
                     {
                         message += $"{Environment.NewLine}{item.Name}: " + $"{item.DueDate}";
                     }
-                    CrossLocalNotifications.Current.Show("Courses Due Soon", message, 0);
+                    CrossLocalNotifications.Current.Show("Courses Due Soon", message, 1);
+                }
+            }
+            if (Settings.CourseStartNotifications)
+            {
+                List<Course> courses = await App.DataBase.GetUpcomingCoursesAsync(7);
+                string message = "";
+                if (courses.Count > 0)
+                {
+                    foreach (var item in courses)
+                    {
+                        message += $"{Environment.NewLine}{item.Name}: " + $"{item.Start}";
+                    }
+                    CrossLocalNotifications.Current.Show("Courses Starting Soon", message, 2);
                 }
             }
         }
