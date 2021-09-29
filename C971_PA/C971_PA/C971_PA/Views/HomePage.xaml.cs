@@ -48,13 +48,21 @@ namespace C971_PA.Views
 
         }
 
-        private async void OnAssessmentSelected(object sender, EventArgs args)
+        private async void OnAssessmentSelected(object sender, SelectedItemChangedEventArgs args)
         {
-
+            if (args.SelectedItem != null)
+            {
+                Assessment assessment = (Assessment)args.SelectedItem;
+                await Shell.Current.Navigation.PushAsync(new AssessmentDetailPage(assessment.AssessmentKey));
+            }
         }
-        private async void OnCourseSelected(object sender, EventArgs args)
+        private async void OnCourseSelected(object sender, SelectedItemChangedEventArgs args)
         {
-
+            if (args.SelectedItem != null)
+            {
+                Course course = (Course)args.SelectedItem;
+                await Shell.Current.Navigation.PushAsync(new CourseDetailPage(course.CourseKey));
+            }
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="C971_PA.Views.AssessmentsPage">
-
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior x:Name="backCommand"/>
-    </Shell.BackButtonBehavior>
+             x:Class="C971_PA.Views.AssessmentsPage"
+             Title="Assessments by Course">
     
     <ListView x:Name="coursesListView"
                     SelectionMode="Single"                  

@@ -87,10 +87,8 @@ namespace C971_PA
                     {
                         message += $"{Environment.NewLine}{item.Name}: " + $"{item.DueDate}";
                     }
-
                     CrossLocalNotifications.Current.Show("Assessments Due Soon", message, 0);
                 }
-
             }
             if (Settings.CourseDueDateNotifications)
             {
@@ -102,7 +100,6 @@ namespace C971_PA
                     {
                         message += $"{Environment.NewLine}{item.Name}: " + $"{item.DueDate}";
                     }
-
                     CrossLocalNotifications.Current.Show("Courses Due Soon", message, 0);
                 }
             }
