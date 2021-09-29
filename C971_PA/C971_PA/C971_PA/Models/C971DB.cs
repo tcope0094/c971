@@ -181,7 +181,7 @@ namespace C971_PA.Models
 
         public async Task<Term> GetCurrentTerm()
         {
-            return await _conn.Table<Term>().Where(t => t.Start >= DateTime.Today && t.End <= DateTime.Today).FirstAsync();
+            return await _conn.Table<Term>().Where(t => t.Start <= DateTime.Today && t.End >= DateTime.Today).FirstAsync();
         }
 
 

@@ -28,7 +28,6 @@ namespace C971_PA.Views
 
         async void OnNewClicked(object sender, EventArgs args)
         {
-            var temp = termsListView.ItemsSource;
             await Navigation.PushModalAsync(new AddTermPage());
         }
 

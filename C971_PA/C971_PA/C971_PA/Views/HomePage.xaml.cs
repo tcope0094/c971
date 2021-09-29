@@ -44,6 +44,8 @@ namespace C971_PA.Views
             currentCoursesListView.ItemsSource = currentCourses;
             currentCoursesListView.BindingContext = currentCourses;
 
+            termLabel.Text = $"Current Term: {term.Name}";
+
         }
 
         private async void OnAssessmentSelected(object sender, EventArgs args)
