@@ -205,8 +205,8 @@ namespace C971_PA.Models
             // INSTRUCTORS
 
             Instructor instructor1 = new Instructor();
-            instructor1.Email = "test_instructor1@wgu.edu";
-            instructor1.Name = "Instructor 1 Test";
+            instructor1.Email = "tcope7@wgu.edu";
+            instructor1.Name = "Tyler Cope";
             instructor1.Phone = "8644207838";
             _syncConn.Insert(instructor1);
 

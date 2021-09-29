@@ -38,6 +38,14 @@ namespace C971_PA.Views
             {
                 assessmentSwitch.IsToggled = false;
             }
+            if (Settings.CourseStartNotifications)
+            {
+                courseStartSwitch.IsToggled = true;
+            }
+            else
+            {
+                courseStartSwitch.IsToggled = false;
+            }
         }
 
         public void OnClearDatabaseButtonClicked(object sender, EventArgs args)
