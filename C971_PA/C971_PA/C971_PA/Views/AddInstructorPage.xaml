@@ -4,9 +4,46 @@
              x:Class="C971_PA.Views.AddInstructorPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid
+            Padding="10,25,10,50"
+            RowSpacing="25"            
+            ColumnSpacing="10"
+            MinimumHeightRequest="100">
+
+                <Label Text="Name:"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="Medium"/>
+                <Entry Text="{Binding Name}"
+                       Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalOptions="Center"
+                       FontSize="Medium"/>
+
+                <Label Text="Phone:"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+
+                <Entry Text="{Binding Phone}"
+                       Grid.Column="1"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+
+                <Label Text="Email: "
+                       Grid.Column="0"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+                <Entry Text="{Binding Email}"
+                       Grid.Column="1"
+                       Grid.Row="3"
+                       FontSize="Medium"/>
+            </Grid>
+            <Button Text="Add"
+                    x:Name="addButton"
+                    Clicked="OnAddButtonClicked"
+                    IsEnabled="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

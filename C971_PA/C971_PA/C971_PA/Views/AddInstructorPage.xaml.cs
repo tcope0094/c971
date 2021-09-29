@@ -16,5 +16,10 @@ namespace C971_PA.Views
         {
             InitializeComponent();
         }
+
+        private async void OnAddButtonClicked(object sender, EventArgs args)
+        {
+
+        }
     }
 }
