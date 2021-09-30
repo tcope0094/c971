@@ -265,6 +265,8 @@ namespace C971_PA.Models
             c1.InstructorID = instructor1.InstructorKey;
             c1.DueDate = c1.End;
             c1.TermID = t1.TermKey;
+            c1.CourseDueNotifications = 1;
+            c1.CourseStartNotifications = 1;
             _syncConn.Insert(c1);
 
             Course c2 = new Course();
@@ -276,6 +278,8 @@ namespace C971_PA.Models
             c2.InstructorID = instructor2.InstructorKey;
             c2.DueDate = c2.End;
             c2.TermID = t1.TermKey;
+            c2.CourseDueNotifications = 1;
+            c2.CourseStartNotifications = 1;
             _syncConn.Insert(c2);
 
             Course c3 = new Course();
@@ -287,6 +291,8 @@ namespace C971_PA.Models
             c3.InstructorID = instructor3.InstructorKey;
             c3.DueDate = c3.End;
             c3.TermID = t1.TermKey;
+            c3.CourseDueNotifications = 1;
+            c3.CourseStartNotifications = 1;
             _syncConn.Insert(c3);
 
             Course c4 = new Course();
@@ -298,6 +304,8 @@ namespace C971_PA.Models
             c4.InstructorID = instructor4.InstructorKey;
             c4.DueDate = c4.End;
             c4.TermID = t1.TermKey;
+            c4.CourseDueNotifications = 1;
+            c4.CourseStartNotifications = 1;
             _syncConn.Insert(c4);
 
             Course c5 = new Course();
@@ -309,6 +317,8 @@ namespace C971_PA.Models
             c5.InstructorID = instructor5.InstructorKey;
             c5.DueDate = c5.End;
             c5.TermID = t1.TermKey;
+            c5.CourseDueNotifications = 1;
+            c5.CourseStartNotifications = 1;
             _syncConn.Insert(c5);
 
             Course c6 = new Course();
@@ -320,6 +330,8 @@ namespace C971_PA.Models
             c6.InstructorID = instructor6.InstructorKey;
             c6.DueDate = c6.End;
             c6.TermID = t1.TermKey;
+            c6.CourseDueNotifications = 1;
+            c6.CourseStartNotifications = 1;
             _syncConn.Insert(c6);
 
             Course c7 = new Course();
@@ -331,6 +343,8 @@ namespace C971_PA.Models
             c7.InstructorID = instructor1.InstructorKey;
             c7.DueDate = c7.End;
             c7.TermID = t2.TermKey;
+            c7.CourseDueNotifications = 0;
+            c7.CourseStartNotifications = 0;
             _syncConn.Insert(c7);
 
             Course c8 = new Course();
@@ -342,6 +356,8 @@ namespace C971_PA.Models
             c8.InstructorID = instructor2.InstructorKey;
             c8.DueDate = c8.End;
             c8.TermID = t2.TermKey;
+            c8.CourseDueNotifications = 0;
+            c8.CourseStartNotifications = 0;
             _syncConn.Insert(c8);
 
             Course c9 = new Course();
@@ -353,6 +369,8 @@ namespace C971_PA.Models
             c9.InstructorID = instructor3.InstructorKey;
             c9.DueDate = c9.End;
             c9.TermID = t2.TermKey;
+            c9.CourseDueNotifications = 0;
+            c9.CourseStartNotifications = 0;
             _syncConn.Insert(c9);
 
             Course c10 = new Course();
@@ -364,6 +382,8 @@ namespace C971_PA.Models
             c10.InstructorID = instructor4.InstructorKey;
             c10.DueDate = c10.End;
             c10.TermID = t2.TermKey;
+            c10.CourseDueNotifications = 0;
+            c10.CourseStartNotifications = 0;
             _syncConn.Insert(c10);
 
             Course c11 = new Course();
@@ -375,6 +395,8 @@ namespace C971_PA.Models
             c11.InstructorID = instructor5.InstructorKey;
             c11.DueDate = c11.End;
             c11.TermID = t2.TermKey;
+            c11.CourseDueNotifications = 0;
+            c11.CourseStartNotifications = 0;
             _syncConn.Insert(c11);
 
             Course c12 = new Course();
@@ -386,6 +408,8 @@ namespace C971_PA.Models
             c12.InstructorID = instructor6.InstructorKey;
             c12.DueDate = c12.End;
             c12.TermID = t2.TermKey;
+            c12.CourseDueNotifications = 0;
+            c12.CourseStartNotifications = 0;
             _syncConn.Insert(c12);
 
             Course c13 = new Course();
@@ -396,6 +420,8 @@ namespace C971_PA.Models
             c13.End = c13.Start.AddDays(45);
             c13.InstructorID = instructor6.InstructorKey;
             c13.DueDate = c13.End;
+            c13.CourseDueNotifications = 0;
+            c13.CourseStartNotifications = 0;
             _syncConn.Insert(c13);
 
             Course c14 = new Course();
@@ -406,6 +432,8 @@ namespace C971_PA.Models
             c14.End = c14.Start.AddDays(45);
             c14.InstructorID = instructor6.InstructorKey;
             c14.DueDate = c14.End;
+            c14.CourseDueNotifications = 0;
+            c14.CourseStartNotifications = 0;
             _syncConn.Insert(c14);
 
             // ASSESSEMENTS
@@ -415,20 +443,23 @@ namespace C971_PA.Models
             a1.Name = "GVC1";
             a1.Type = "OA";
             a1.DueDate = c1.DueDate;
+            a1.AssessmentDueNotification = 1;
             _syncConn.Insert(a1);
 
             Assessment a2 = new Assessment();
             a2.CourseID = c1.CourseKey;
             a2.Name = "PGVC";
-            a2.Type = "OA";
+            a2.Type = "PA";
             a2.DueDate = c1.DueDate;
+            a2.AssessmentDueNotification = 0;
             _syncConn.Insert(a2);
 
             Assessment a3 = new Assessment();
             a3.CourseID = c2.CourseKey;
             a3.Name = "DIT1";
-            a3.Type = "PA";
+            a3.Type = "OA";
             a3.DueDate = c2.DueDate;
+            a3.AssessmentDueNotification = 1;
             _syncConn.Insert(a3);
 
             Assessment a4 = new Assessment();
@@ -436,6 +467,7 @@ namespace C971_PA.Models
             a4.Name = "DIT2";
             a4.Type = "PA";
             a4.DueDate = c2.DueDate;
+            a4.AssessmentDueNotification = 1;
             _syncConn.Insert(a4);
 
             Assessment a5 = new Assessment();
@@ -443,13 +475,15 @@ namespace C971_PA.Models
             a5.Name = "LMC1";
             a5.Type = "OA";
             a5.DueDate = c3.DueDate;
+            a5.AssessmentDueNotification = 0;
             _syncConn.Insert(a5);
 
             Assessment a6 = new Assessment();
             a6.CourseID = c3.CourseKey;
             a6.Name = "PLMC";
-            a6.Type = "OA";
+            a6.Type = "PA";
             a6.DueDate = c3.DueDate;
+            a6.AssessmentDueNotification = 1;
             _syncConn.Insert(a6);
 
             Assessment a7 = new Assessment();
@@ -457,13 +491,15 @@ namespace C971_PA.Models
             a7.Name = "CEC1";
             a7.Type = "OA";
             a7.DueDate = c4.DueDate;
+            a7.AssessmentDueNotification = 1;
             _syncConn.Insert(a7);
 
             Assessment a8 = new Assessment();
             a8.CourseID = c4.CourseKey;
             a8.Name = "PCEC";
-            a8.Type = "OA";
+            a8.Type = "PA";
             a8.DueDate = c4.DueDate;
+            a8.AssessmentDueNotification = 1;
             _syncConn.Insert(a8);
 
             Assessment a9 = new Assessment();
@@ -471,13 +507,15 @@ namespace C971_PA.Models
             a9.Name = "JQC1";
             a9.Type = "OA";
             a9.DueDate = c5.DueDate;
+            a9.AssessmentDueNotification = 0;
             _syncConn.Insert(a9);
 
             Assessment a10 = new Assessment();
             a10.CourseID = c5.CourseKey;
             a10.Name = "PJQC";
-            a10.Type = "OA";
+            a10.Type = "PA";
             a10.DueDate = c5.DueDate;
+            a10.AssessmentDueNotification = 1;
             _syncConn.Insert(a10);
 
             Assessment a11 = new Assessment();
@@ -485,6 +523,7 @@ namespace C971_PA.Models
             a11.Name = "HRC1";
             a11.Type = "OA";
             a11.DueDate = c6.DueDate;
+            a11.AssessmentDueNotification = 1;
             _syncConn.Insert(a11);
 
             Assessment a12 = new Assessment();
@@ -492,6 +531,7 @@ namespace C971_PA.Models
             a12.Name = "FBT1";
             a12.Type = "PA";
             a12.DueDate = c6.DueDate;
+            a12.AssessmentDueNotification = 0;
             _syncConn.Insert(a12);
 
             Assessment a13 = new Assessment();
@@ -499,13 +539,15 @@ namespace C971_PA.Models
             a13.Name = "DHC1";
             a13.Type = "OA";
             a13.DueDate = c7.DueDate;
+            a13.AssessmentDueNotification = 1;
             _syncConn.Insert(a13);
 
             Assessment a14 = new Assessment();
             a14.CourseID = c7.CourseKey;
             a14.Name = "PDHC";
-            a14.Type = "OA";
+            a14.Type = "PA";
             a14.DueDate = c7.DueDate;
+            a14.AssessmentDueNotification = 1;
             _syncConn.Insert(a14);
 
             Assessment a15 = new Assessment();
@@ -513,13 +555,15 @@ namespace C971_PA.Models
             a15.Name = "YGC1";
             a15.Type = "OA";
             a15.DueDate = c8.DueDate;
+            a15.AssessmentDueNotification = 1;
             _syncConn.Insert(a15);
 
             Assessment a16 = new Assessment();
             a16.CourseID = c8.CourseKey;
             a16.Name = "PYGC";
-            a16.Type = "OA";
+            a16.Type = "PA";
             a16.DueDate = c8.DueDate;
+            a16.AssessmentDueNotification = 1;
             _syncConn.Insert(a16);
 
             Assessment a17 = new Assessment();
@@ -527,13 +571,15 @@ namespace C971_PA.Models
             a17.Name = "VEC1";
             a17.Type = "OA";
             a17.DueDate = c9.DueDate;
+            a17.AssessmentDueNotification = 0;
             _syncConn.Insert(a17);
 
             Assessment a18 = new Assessment();
             a18.CourseID = c9.CourseKey;
             a18.Name = "PVEC";
-            a18.Type = "OA";
+            a18.Type = "PA";
             a18.DueDate = c9.DueDate;
+            a18.AssessmentDueNotification = 1;
             _syncConn.Insert(a18);
 
             Assessment a19 = new Assessment();
@@ -541,13 +587,15 @@ namespace C971_PA.Models
             a19.Name = "KBC1";
             a19.Type = "OA";
             a19.DueDate = c10.DueDate;
+            a19.AssessmentDueNotification = 0;
             _syncConn.Insert(a19);
 
             Assessment a20 = new Assessment();
             a20.CourseID = c10.CourseKey;
             a20.Name = "PKBC";
-            a20.Type = "OA";
+            a20.Type = "PA";
             a20.DueDate = c10.DueDate;
+            a20.AssessmentDueNotification = 0;
             _syncConn.Insert(a20);
 
             Assessment a21 = new Assessment();
@@ -555,20 +603,23 @@ namespace C971_PA.Models
             a21.Name = "LUV1";
             a21.Type = "OA";
             a21.DueDate = c11.DueDate;
+            a21.AssessmentDueNotification = 1;
             _syncConn.Insert(a21);
 
             Assessment a22 = new Assessment();
             a22.CourseID = c11.CourseKey;
             a22.Name = "PLUV";
-            a22.Type = "OA";
+            a22.Type = "PA";
             a22.DueDate = c11.DueDate;
+            a22.AssessmentDueNotification = 1;
             _syncConn.Insert(a22);
 
             Assessment a23 = new Assessment();
             a23.CourseID = c12.CourseKey;
             a23.Name = "TLM1";
-            a23.Type = "PA";
+            a23.Type = "OA";
             a23.DueDate = c12.DueDate;
+            a23.AssessmentDueNotification = 0;
             _syncConn.Insert(a23);
 
             Assessment a24 = new Assessment();
@@ -576,6 +627,7 @@ namespace C971_PA.Models
             a24.Name = "PTLM";
             a24.Type = "PA";
             a24.DueDate = c12.DueDate;
+            a24.AssessmentDueNotification = 1;
             _syncConn.Insert(a24);
 
         }
