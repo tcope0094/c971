@@ -39,6 +39,8 @@
 
 
         <Button Text="Reset Database"
+                IsVisible="False"
+                IsEnabled="False"
                 Clicked="OnClearDatabaseButtonClicked"
                 HorizontalOptions="Center"
                 Margin="50"/>

@@ -11,7 +11,8 @@
             <Entry x:Name="newTermName"
                     Text="{Binding Name}"
                     Placeholder="Name of New Term"
-                    HeightRequest="50"/>
+                    HeightRequest="50"
+                   TextChanged="FieldUpdated"/>
 
             <Grid>
                 <Label Text="Start Date"
@@ -20,6 +21,7 @@
                        VerticalOptions="Center"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding Start}"
+                            DateSelected="FieldUpdated"
                             Grid.Column="1"
                             Grid.Row="0"/>                
 
@@ -29,6 +31,7 @@
                        VerticalOptions="Center"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding End}"
+                            DateSelected="FieldUpdated"
                             Grid.Column="1"
                             Grid.Row="1"/>
             </Grid>
@@ -41,7 +44,9 @@
             </StackLayout>
             
             <Button Text="Add"
-                    Clicked="OnAddButtonClicked"/>
+                    x:Name="addButton"
+                    Clicked="OnAddButtonClicked"
+                    IsEnabled="False"/>
         
         </StackLayout>
     </ContentPage.Content>

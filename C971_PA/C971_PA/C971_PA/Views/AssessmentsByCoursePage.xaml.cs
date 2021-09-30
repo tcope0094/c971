@@ -42,5 +42,10 @@ namespace C971_PA.Views
             await Shell.Current.Navigation.PushAsync(new AssessmentDetailPage(assessment.AssessmentKey));
         }
 
+        private async void OnAddClicked(object sender, EventArgs args)
+        {
+            await Shell.Current.Navigation.PushModalAsync(new AddAssessmentsPage(course));
+        }
+
     }
 }

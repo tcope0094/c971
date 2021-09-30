@@ -17,7 +17,17 @@ namespace C971_PA.Views
         public AddTermPage()
         {
             InitializeComponent();
-            BindingContext = new Term();
+            BindingContext = new Term
+            {
+                Start = DateTime.Today,
+                End = DateTime.Today.AddMonths(6)
+            };
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            addButton.IsEnabled = false;
         }
 
         private async void OnAddButtonClicked(object sender, EventArgs args)
@@ -38,6 +48,18 @@ namespace C971_PA.Views
                 {
                     await DisplayAlert("Error", e.Message, "OK");
                 }
+            }
+        }
+
+        private async void FieldUpdated(object sender, EventArgs args)
+        {
+            if (newTermName != null)
+            {
+                addButton.IsEnabled = true;
+            }
+            else
+            {
+                addButton.IsEnabled = false;
             }
         }
     }

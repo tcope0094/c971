@@ -17,11 +17,12 @@ namespace C971_PA.Views
         public AddCoursePage()
         {
             InitializeComponent();
-            this.BindingContext = new Course();
-
-            startDatePicker.Date = DateTime.Now;
-            endDatePicker.Date = DateTime.Now;
-            dueDatePicker.Date = DateTime.Now;
+            this.BindingContext = new Course
+            {
+                Start = DateTime.Today,
+                End = DateTime.Today.AddMonths(1),
+                DueDate = DateTime.Today.AddMonths(6)
+            };
         }
 
         protected override async void OnAppearing()

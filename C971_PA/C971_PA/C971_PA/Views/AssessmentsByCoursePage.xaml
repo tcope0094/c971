@@ -4,6 +4,11 @@
              x:Class="C971_PA.Views.AssessmentsByCoursePage"
              Title="{Binding Name}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                     Clicked="OnAddClicked"/>
+    </ContentPage.ToolbarItems>
+
     <Shell.BackButtonBehavior>
         <BackButtonBehavior x:Name="backCommand"/>
     </Shell.BackButtonBehavior>
