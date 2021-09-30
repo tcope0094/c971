@@ -190,6 +190,24 @@ namespace C971_PA.Models
             return await _conn.Table<Course>().Where(c => c.Start <= dateInterval && c.Start > DateTime.Today).ToListAsync();
         }
 
+        public async Task<List<Course>> GetCourseDueNotifications(int days)
+        {
+            List<Course> courses = await GetCoursesDueAsync(days);
+            return courses.Where(c => c.CourseDueNotifications == 1).ToList();
+        }
+
+        public async Task<List<Course>> GetCourseStartNotifications(int days)
+        {
+            List<Course> courses = await GetUpcomingCoursesAsync(days);
+            return courses.Where(c => c.CourseStartNotifications == 1).ToList();
+        }
+
+        public async Task<List<Assessment>> GetAssessmentDueNotifications(int days)
+        {
+            List<Assessment> assessments = await GetAssessmentsDueAsync(days);
+            return assessments.Where(a => a.AssessmentDueNotifications == 1).ToList();
+        }
+
 
         public void CreateTables()
         {
