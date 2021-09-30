@@ -1,16 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:C971_PA"
              x:Class="C971_PA.Views.AddAssessmentsPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToBoolConverter x:Key="intToBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <StackLayout Orientation="Vertical"
                      VerticalOptions="CenterAndExpand"
                      Padding="10,10,10,10">
 
             
-            <Grid Padding="10,10,10,100">
+            <Grid  x:Name="paGrid"
+                Padding="10,0,10,100">
                 <Entry x:Name="newPaName"
-                    Placeholder="Name of Performance Assessment"
+                       Text="{Binding Name}"
+                       Placeholder="Name of Performance Assessment"
                        Grid.Column="0"
                        Grid.Row="0"
                        Grid.ColumnSpan="2"
@@ -20,32 +30,54 @@
                        Grid.Row="1"
                        FontSize="Medium"/>
                 <DatePicker x:Name="paDueDatePicker"
+                            Date="{Binding DueDate}"
                             Grid.Column="1"
                             Grid.Row="1"
                             DateSelected="ValidateFields"/>
+                <Label Text="Assessment Due Date Notifications"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+                <Switch x:Name="paDueSwitch"
+                        IsToggled="{Binding AssessmentDueNotifications, Converter={StaticResource intToBool}}"
+                        Grid.Column="1"
+                        Grid.Row="2"/>
             </Grid>
             
             
-            <Grid>
+            <Grid x:Name="oaGrid"
+                  Padding="10,0,10,0">
                 <Entry x:Name="newOaName"
-                    Text="{Binding Name}"
-                    Placeholder="Name of Objective Assessment"
+                       Text="{Binding Name}"
+                       Placeholder="Name of Objective Assessment"
                        Grid.Column="0"
                        Grid.Row="0"
                        Grid.ColumnSpan="2"
                    TextChanged="ValidateFields"/>
+                
                 <Label Text="OA Due Date"
                        Grid.Column="0"
                        Grid.Row="1"
                        VerticalOptions="Center"
                        FontSize="Medium"/>
                 <DatePicker x:Name="oaDueDatePicker"
+                            Date="{Binding DueDate}"
                             Grid.Column="1"
                             Grid.Row="1"
                             DateSelected="ValidateFields"/>
+                
+                <Label Text="Assessment Due Date Notifications"
+                       Grid.Column="0"
+                       Grid.Row="2"
+                       FontSize="Medium"/>
+                <Switch x:Name="oaDueSwitch"
+                        IsToggled="{Binding AssessmentDueNotificationss, Converter={StaticResource intToBool}}"
+                        Grid.Column="1"
+                        Grid.Row="2"/>
             </Grid>
 
             <Button Text="Add"
+                    Margin="0,100,0,0"
                     x:Name="addButton"
                     Clicked="OnAddButtonClicked"
                     IsEnabled="False"/>

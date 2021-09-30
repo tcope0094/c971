@@ -15,16 +15,33 @@ namespace C971_PA.Views
     public partial class AddAssessmentsPage : ContentPage
     {
         Course course;
+
+        Assessment pa;
+        Assessment oa;
+
         public AddAssessmentsPage(Course course)
         {
             InitializeComponent();
             this.course = course;
+
+            pa = new Assessment
+            {
+                Type = "PA",
+                DueDate = course.End
+            };
+
+            oa = new Assessment
+            {
+                Type = "OA",
+                DueDate = course.End
+            };
+
+            oaGrid.BindingContext = oa;
+            paGrid.BindingContext = pa;
         }
 
         private async void OnAddButtonClicked(object sender, EventArgs args)
         {
-            Assessment pa = new Assessment();
-            Assessment oa = new Assessment();
 
             if (oaDueDatePicker.Date > course.End || oaDueDatePicker.Date < course.Start || paDueDatePicker.Date > course.End || paDueDatePicker.Date < course.Start)
             {
@@ -32,15 +49,8 @@ namespace C971_PA.Views
             }
             else
             {
-                pa.CourseID = course.CourseKey;
-                pa.DueDate = paDueDatePicker.Date;
-                pa.Name = newPaName.Text;
-                pa.Type = "PA";
-
-                oa.CourseID = course.CourseKey;
-                oa.DueDate = oaDueDatePicker.Date;
-                oa.Name = newOaName.Text;
-                oa.Type = "OA";
+                pa.CourseID = course.CourseKey;                
+                oa.CourseID = course.CourseKey;                
             }
 
             try
