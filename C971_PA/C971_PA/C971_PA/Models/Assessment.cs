@@ -19,7 +19,7 @@ namespace C971_PA.Models
         [MaxLength(250), NotNull]
         public DateTime DueDate { get; set; }
         [MaxLength(1)]
-        public int AssessmentDueNotification { get; set; }
+        public int AssessmentDueNotifications { get; set; }
 
         public static readonly List<string> PossibleTypes = new List<string> { "OA", "PA" };
     }

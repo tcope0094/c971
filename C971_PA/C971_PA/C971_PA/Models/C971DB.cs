@@ -443,7 +443,7 @@ namespace C971_PA.Models
             a1.Name = "GVC1";
             a1.Type = "OA";
             a1.DueDate = c1.DueDate;
-            a1.AssessmentDueNotification = 1;
+            a1.AssessmentDueNotifications = 1;
             _syncConn.Insert(a1);
 
             Assessment a2 = new Assessment();
@@ -451,7 +451,7 @@ namespace C971_PA.Models
             a2.Name = "PGVC";
             a2.Type = "PA";
             a2.DueDate = c1.DueDate;
-            a2.AssessmentDueNotification = 0;
+            a2.AssessmentDueNotifications = 0;
             _syncConn.Insert(a2);
 
             Assessment a3 = new Assessment();
@@ -459,7 +459,7 @@ namespace C971_PA.Models
             a3.Name = "DIT1";
             a3.Type = "OA";
             a3.DueDate = c2.DueDate;
-            a3.AssessmentDueNotification = 1;
+            a3.AssessmentDueNotifications = 1;
             _syncConn.Insert(a3);
 
             Assessment a4 = new Assessment();
@@ -467,7 +467,7 @@ namespace C971_PA.Models
             a4.Name = "DIT2";
             a4.Type = "PA";
             a4.DueDate = c2.DueDate;
-            a4.AssessmentDueNotification = 1;
+            a4.AssessmentDueNotifications = 1;
             _syncConn.Insert(a4);
 
             Assessment a5 = new Assessment();
@@ -475,7 +475,7 @@ namespace C971_PA.Models
             a5.Name = "LMC1";
             a5.Type = "OA";
             a5.DueDate = c3.DueDate;
-            a5.AssessmentDueNotification = 0;
+            a5.AssessmentDueNotifications = 0;
             _syncConn.Insert(a5);
 
             Assessment a6 = new Assessment();
@@ -483,7 +483,7 @@ namespace C971_PA.Models
             a6.Name = "PLMC";
             a6.Type = "PA";
             a6.DueDate = c3.DueDate;
-            a6.AssessmentDueNotification = 1;
+            a6.AssessmentDueNotifications = 1;
             _syncConn.Insert(a6);
 
             Assessment a7 = new Assessment();
@@ -491,7 +491,7 @@ namespace C971_PA.Models
             a7.Name = "CEC1";
             a7.Type = "OA";
             a7.DueDate = c4.DueDate;
-            a7.AssessmentDueNotification = 1;
+            a7.AssessmentDueNotifications = 1;
             _syncConn.Insert(a7);
 
             Assessment a8 = new Assessment();
@@ -499,7 +499,7 @@ namespace C971_PA.Models
             a8.Name = "PCEC";
             a8.Type = "PA";
             a8.DueDate = c4.DueDate;
-            a8.AssessmentDueNotification = 1;
+            a8.AssessmentDueNotifications = 1;
             _syncConn.Insert(a8);
 
             Assessment a9 = new Assessment();
@@ -507,7 +507,7 @@ namespace C971_PA.Models
             a9.Name = "JQC1";
             a9.Type = "OA";
             a9.DueDate = c5.DueDate;
-            a9.AssessmentDueNotification = 0;
+            a9.AssessmentDueNotifications = 0;
             _syncConn.Insert(a9);
 
             Assessment a10 = new Assessment();
@@ -515,7 +515,7 @@ namespace C971_PA.Models
             a10.Name = "PJQC";
             a10.Type = "PA";
             a10.DueDate = c5.DueDate;
-            a10.AssessmentDueNotification = 1;
+            a10.AssessmentDueNotifications = 1;
             _syncConn.Insert(a10);
 
             Assessment a11 = new Assessment();
@@ -523,7 +523,7 @@ namespace C971_PA.Models
             a11.Name = "HRC1";
             a11.Type = "OA";
             a11.DueDate = c6.DueDate;
-            a11.AssessmentDueNotification = 1;
+            a11.AssessmentDueNotifications = 1;
             _syncConn.Insert(a11);
 
             Assessment a12 = new Assessment();
@@ -531,7 +531,7 @@ namespace C971_PA.Models
             a12.Name = "FBT1";
             a12.Type = "PA";
             a12.DueDate = c6.DueDate;
-            a12.AssessmentDueNotification = 0;
+            a12.AssessmentDueNotifications = 0;
             _syncConn.Insert(a12);
 
             Assessment a13 = new Assessment();
@@ -539,7 +539,7 @@ namespace C971_PA.Models
             a13.Name = "DHC1";
             a13.Type = "OA";
             a13.DueDate = c7.DueDate;
-            a13.AssessmentDueNotification = 1;
+            a13.AssessmentDueNotifications = 1;
             _syncConn.Insert(a13);
 
             Assessment a14 = new Assessment();
@@ -547,7 +547,7 @@ namespace C971_PA.Models
             a14.Name = "PDHC";
             a14.Type = "PA";
             a14.DueDate = c7.DueDate;
-            a14.AssessmentDueNotification = 1;
+            a14.AssessmentDueNotifications = 1;
             _syncConn.Insert(a14);
 
             Assessment a15 = new Assessment();
@@ -555,7 +555,7 @@ namespace C971_PA.Models
             a15.Name = "YGC1";
             a15.Type = "OA";
             a15.DueDate = c8.DueDate;
-            a15.AssessmentDueNotification = 1;
+            a15.AssessmentDueNotifications = 1;
             _syncConn.Insert(a15);
 
             Assessment a16 = new Assessment();
@@ -563,7 +563,7 @@ namespace C971_PA.Models
             a16.Name = "PYGC";
             a16.Type = "PA";
             a16.DueDate = c8.DueDate;
-            a16.AssessmentDueNotification = 1;
+            a16.AssessmentDueNotifications = 1;
             _syncConn.Insert(a16);
 
             Assessment a17 = new Assessment();
@@ -571,7 +571,7 @@ namespace C971_PA.Models
             a17.Name = "VEC1";
             a17.Type = "OA";
             a17.DueDate = c9.DueDate;
-            a17.AssessmentDueNotification = 0;
+            a17.AssessmentDueNotifications = 0;
             _syncConn.Insert(a17);
 
             Assessment a18 = new Assessment();
@@ -579,7 +579,7 @@ namespace C971_PA.Models
             a18.Name = "PVEC";
             a18.Type = "PA";
             a18.DueDate = c9.DueDate;
-            a18.AssessmentDueNotification = 1;
+            a18.AssessmentDueNotifications = 1;
             _syncConn.Insert(a18);
 
             Assessment a19 = new Assessment();
@@ -587,7 +587,7 @@ namespace C971_PA.Models
             a19.Name = "KBC1";
             a19.Type = "OA";
             a19.DueDate = c10.DueDate;
-            a19.AssessmentDueNotification = 0;
+            a19.AssessmentDueNotifications = 0;
             _syncConn.Insert(a19);
 
             Assessment a20 = new Assessment();
@@ -595,7 +595,7 @@ namespace C971_PA.Models
             a20.Name = "PKBC";
             a20.Type = "PA";
             a20.DueDate = c10.DueDate;
-            a20.AssessmentDueNotification = 0;
+            a20.AssessmentDueNotifications = 0;
             _syncConn.Insert(a20);
 
             Assessment a21 = new Assessment();
@@ -603,7 +603,7 @@ namespace C971_PA.Models
             a21.Name = "LUV1";
             a21.Type = "OA";
             a21.DueDate = c11.DueDate;
-            a21.AssessmentDueNotification = 1;
+            a21.AssessmentDueNotifications = 1;
             _syncConn.Insert(a21);
 
             Assessment a22 = new Assessment();
@@ -611,7 +611,7 @@ namespace C971_PA.Models
             a22.Name = "PLUV";
             a22.Type = "PA";
             a22.DueDate = c11.DueDate;
-            a22.AssessmentDueNotification = 1;
+            a22.AssessmentDueNotifications = 1;
             _syncConn.Insert(a22);
 
             Assessment a23 = new Assessment();
@@ -619,7 +619,7 @@ namespace C971_PA.Models
             a23.Name = "TLM1";
             a23.Type = "OA";
             a23.DueDate = c12.DueDate;
-            a23.AssessmentDueNotification = 0;
+            a23.AssessmentDueNotifications = 0;
             _syncConn.Insert(a23);
 
             Assessment a24 = new Assessment();
@@ -627,7 +627,7 @@ namespace C971_PA.Models
             a24.Name = "PTLM";
             a24.Type = "PA";
             a24.DueDate = c12.DueDate;
-            a24.AssessmentDueNotification = 1;
+            a24.AssessmentDueNotifications = 1;
             _syncConn.Insert(a24);
 
         }

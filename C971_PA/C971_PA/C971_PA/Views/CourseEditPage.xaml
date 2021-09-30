@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:C971_PA"
              x:Class="C971_PA.Views.CourseEditPage"
              Title="{Binding Name}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToBoolConverter x:Key="intToBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout>
@@ -85,6 +92,8 @@
                        Grid.Row="7"
                        FontSize="Medium"/>
                 <Switch x:Name="courseStartSwitch"
+                        IsToggled="{Binding CourseStartNotifications, Converter={StaticResource intToBool}}"
+                        Toggled="OnFieldChanged"
                         Grid.Column="1"
                         Grid.Row="7"/>
 
@@ -93,6 +102,8 @@
                        Grid.Row="8"
                        FontSize="Medium"/>
                 <Switch x:Name="courseDueSwitch"
+                        IsToggled="{Binding CourseDueNotifications, Converter={StaticResource intToBool}}"
+                        Toggled="OnFieldChanged"
                         Grid.Column="1"
                         Grid.Row="8"/>
             </Grid>

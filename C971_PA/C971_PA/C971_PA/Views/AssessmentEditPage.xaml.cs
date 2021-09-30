@@ -16,6 +16,7 @@ namespace C971_PA.Views
     {
         Assessment assessment;
         List<string> types;
+        bool loaded;
         public AssessmentEditPage(Assessment assessment)
         {
             InitializeComponent();
@@ -34,11 +35,15 @@ namespace C971_PA.Views
             assessmentTypePicker.ItemsSource = types;
             assessmentTypePicker.SelectedIndex = types.IndexOf(assessment.Type);
             saveButton.IsEnabled = false;
+            loaded = true;
         }
 
         private void OnFieldChanged(object sender, EventArgs args)
         {
-            saveButton.IsEnabled = true;
+            if (loaded)
+            {
+                saveButton.IsEnabled = true;
+            }
         }
 
         private async void OnSaveButtonClicked(object sender, EventArgs args)
