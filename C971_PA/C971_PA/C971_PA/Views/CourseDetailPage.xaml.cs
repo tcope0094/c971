@@ -18,7 +18,6 @@ namespace C971_PA.Views
     {
         int courseKey;
 
-
         Instructor instructor;
         Course course;
         public CourseDetailPage(int courseKey)
@@ -44,6 +43,7 @@ namespace C971_PA.Views
             {
                 shareNotesButton.IsEnabled = true;
             }
+            termName.Text = await App.DataBase.GetTermNameAsync(course.CourseKey);
         }
 
         public async void OnEditClicked(object sender, EventArgs args)

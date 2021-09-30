@@ -19,6 +19,7 @@ namespace C971_PA.Views
         List<string> allStatuses;
         Course course;
         Instructor newInstructor;
+        Term term;
         bool loaded;
         public CourseEditPage(Course course, Instructor instructor)
         {
@@ -33,6 +34,12 @@ namespace C971_PA.Views
             this.BindingContext = this.course;
             this.allInstructors = await GetAllInstructorNames();
 
+            if (course.TermID != null)
+            {
+                int termId = course.TermID ?? default(int);
+                this.term = await App.DataBase.GetTermAsync(termId);
+            }
+
             this.allStatuses = Course.PossibleStatuses;
 
             statusPicker.BindingContext = course.Status;
@@ -43,6 +50,22 @@ namespace C971_PA.Views
 
             statusPicker.SelectedIndex = allStatuses.IndexOf(course.Status);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
+
+            startDatePicker.MinimumDate = term.Start;
+            startDatePicker.MaximumDate = term.End;
+            endDatePicker.MinimumDate = term.Start;
+            endDatePicker.MaximumDate = term.End;
+            dueDatePicker.MinimumDate = term.Start;
+            dueDatePicker.MaximumDate = term.End;
+
+            if (term != null)
+            {
+                termName.Text = term.Name;
+            }
+            else
+            {
+                termName.Text = "Unassigned";
+            }
                      
             loaded = true;
         }
@@ -73,27 +96,30 @@ namespace C971_PA.Views
 
         private async void OnSaveButtonClicked(object sender, EventArgs args)
         {
-            try
+            if (ValidDates(course, term))
             {
-                if (newInstructor != null)
+                try
                 {
-                    course.InstructorID = newInstructor.InstructorKey;
-                }
-                course.Status = (string)statusPicker.SelectedItem;
+                    if (newInstructor != null)
+                    {
+                        course.InstructorID = newInstructor.InstructorKey;
+                    }
+                    course.Status = (string)statusPicker.SelectedItem;
 
-                var result = App.DataBase.UpdateCourseAsync(course);
+                    var result = App.DataBase.UpdateCourseAsync(course);
 
-                await Shell.Current.Navigation.PopModalAsync();
-            }
-            catch (SQLite.SQLiteException e)
-            {
-                if ((e.Message).Contains("UNIQUE"))
-                {
-                    await DisplayAlert("Error", "Course name already exists", "OK");
+                    await Shell.Current.Navigation.PopModalAsync();
                 }
-                else
+                catch (SQLite.SQLiteException e)
                 {
-                    await DisplayAlert("Error", e.Message, "OK");
+                    if ((e.Message).Contains("UNIQUE"))
+                    {
+                        await DisplayAlert("Error", "Course name already exists", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", e.Message, "OK");
+                    }
                 }
             }
         }
@@ -104,6 +130,30 @@ namespace C971_PA.Views
             {
                 saveButton.IsEnabled = true;
             }
+        }
+
+        private bool ValidDates(Course course, Term term)
+        {
+            bool valid = false;
+            bool validCourse = false;
+            bool validTermCourse = false;
+
+            if (course.Start <= course.End && course.End <= course.DueDate)
+            {
+                validCourse = true;
+            }
+
+            if (course.Start >= term.Start && course.Start <= term.End && course.End >= term.Start && course.End <= term.End)
+            {
+                validTermCourse = true;
+            }
+
+            if (validCourse && validTermCourse)
+            {
+                valid = true;
+            }
+
+            return valid;
         }
     }
 }

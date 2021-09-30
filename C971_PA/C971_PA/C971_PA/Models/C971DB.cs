@@ -208,6 +208,12 @@ namespace C971_PA.Models
             return assessments.Where(a => a.AssessmentDueNotifications == 1).ToList();
         }
 
+        public async Task<string> GetTermNameAsync(int courseId)
+        {
+            Course course = await GetCourseAsync(courseId);
+            Term term = await _conn.Table<Term>().Where(t => t.TermKey == course.TermID).FirstOrDefaultAsync();
+            return term.Name;
+        }
 
         public void CreateTables()
         {

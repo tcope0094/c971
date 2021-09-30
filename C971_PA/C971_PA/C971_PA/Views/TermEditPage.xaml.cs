@@ -77,6 +77,9 @@ namespace C971_PA.Views
                         }
                         var temp = coursesToAdd;
                         item.TermID = this.term.TermKey;
+                        item.Start = this.term.Start;
+                        item.End = this.term.End;
+                        item.DueDate = this.term.End;
                         int result = await App.DataBase.UpdateCourseAsync(item);
                     }
                 }
@@ -110,6 +113,7 @@ namespace C971_PA.Views
         public async void OnRemoveCoursesButtonClicked(object sender, EventArgs args)
         {
             this.coursesInTerm.Remove((Course)termCoursesCollectionView.SelectedItem);
+            this.coursesNotInTerm.Add((Course)termCoursesCollectionView.SelectedItem);
             this.coursesToRemove.Add((Course)termCoursesCollectionView.SelectedItem);
             removeButton.IsEnabled = false;
             saveButton.IsEnabled = true;

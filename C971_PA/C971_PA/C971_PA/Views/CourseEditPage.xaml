@@ -14,9 +14,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Grid
-            Padding="10,25,10,50"           
-            ColumnSpacing="10"
-            MinimumHeightRequest="100">
+            Padding="10,10,10,10"           
+            ColumnSpacing="10">
                 
                 <Label Text="Name:"
                        Grid.Column="0"
@@ -44,68 +43,79 @@
                         VerticalOptions="Center"
                         FontSize="Medium"/>
 
+                <Label Text="Assigned to Term:"
+                       FontSize="Medium"
+                       Grid.Column="0"
+                       Grid.Row="3"/>
+
+                <Label x:Name="termName"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       Grid.Column="1"
+                       Grid.Row="3"/>
+
                 <Label Text="Start:"
                        Grid.Column="0"
-                       Grid.Row="3"
+                       Grid.Row="4"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding Start}"
                             DateSelected="OnFieldChanged"
                             x:Name="startDatePicker"
                             Grid.Column="1"
-                            Grid.Row="3"
+                            Grid.Row="4"
                             FontSize="Medium"/>
 
                 <Label Text="End: "
                        Grid.Column="0"
-                       Grid.Row="4"
+                       Grid.Row="5"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding End}"
                             DateSelected="OnFieldChanged"
                             x:Name="endDatePicker"
                             Grid.Column="1"
-                            Grid.Row="4"
+                            Grid.Row="5"
                             FontSize="Medium"/>
 
                 <Label Text="Due Date:"
                        Grid.Column="0"
-                       Grid.Row="5"
+                       Grid.Row="6"
                        FontSize="Medium"/>
                 <DatePicker Date="{Binding DueDate}"
                             DateSelected="OnFieldChanged"
                             x:Name="dueDatePicker"
                             Grid.Column="1"
-                            Grid.Row="5"
+                            Grid.Row="6"
                             FontSize="Medium"/>
 
                 <Label Text="Instructor:"
                        Grid.Column="0"
-                       Grid.Row="6"
+                       Grid.Row="7"
                        FontSize="Medium"/>
                 <Picker x:Name="instructorPicker"
                         SelectedIndexChanged="OnInstructorSelected"
                         Grid.Column="1"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         FontSize="Medium"/>
 
                 <Label Text="Course Start Notifications"
                        Grid.Column="0"
-                       Grid.Row="7"
+                       Grid.Row="8"
                        FontSize="Medium"/>
                 <Switch x:Name="courseStartSwitch"
                         IsToggled="{Binding CourseStartNotifications, Converter={StaticResource intToBool}}"
                         Toggled="OnFieldChanged"
                         Grid.Column="1"
-                        Grid.Row="7"/>
+                        Grid.Row="8"/>
 
                 <Label Text="Course Due Notifications"
                        Grid.Column="0"
-                       Grid.Row="8"
+                       Grid.Row="9"
                        FontSize="Medium"/>
                 <Switch x:Name="courseDueSwitch"
                         IsToggled="{Binding CourseDueNotifications, Converter={StaticResource intToBool}}"
                         Toggled="OnFieldChanged"
                         Grid.Column="1"
-                        Grid.Row="8"/>
+                        Grid.Row="9"/>
             </Grid>
 
             <Label Text="Notes:"
