@@ -79,7 +79,7 @@ namespace C971_PA
         {
             if (Settings.AssessmentDueDateNotifications)
             {
-                List<Assessment> assessments = await App.DataBase.GetAssessmentsDueAsync(7);
+                List<Assessment> assessments = await App.DataBase.GetAssessmentDueNotifications(7);
                 string message = "";
                 if (assessments.Count > 0)
                 {
@@ -92,7 +92,7 @@ namespace C971_PA
             }
             if (Settings.CourseDueDateNotifications)
             {
-                List<Course> courses = await App.DataBase.GetCoursesDueAsync(7);
+                List<Course> courses = await App.DataBase.GetCourseDueNotifications(7);
                 string message = "";
                 if (courses.Count > 0)
                 {
@@ -105,7 +105,7 @@ namespace C971_PA
             }
             if (Settings.CourseStartNotifications)
             {
-                List<Course> courses = await App.DataBase.GetUpcomingCoursesAsync(7);
+                List<Course> courses = await App.DataBase.GetCourseStartNotifications(7);
                 string message = "";
                 if (courses.Count > 0)
                 {
