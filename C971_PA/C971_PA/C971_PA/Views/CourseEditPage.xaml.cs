@@ -51,12 +51,22 @@ namespace C971_PA.Views
             statusPicker.SelectedIndex = allStatuses.IndexOf(course.Status);
             instructorPicker.SelectedIndex = allInstructors.IndexOf(instructor.Name);
 
-            startDatePicker.MinimumDate = term.Start;
-            startDatePicker.MaximumDate = term.End;
-            endDatePicker.MinimumDate = term.Start;
-            endDatePicker.MaximumDate = term.End;
-            dueDatePicker.MinimumDate = term.Start;
-            dueDatePicker.MaximumDate = term.End;
+            if (term != null)
+            {
+                startDatePicker.MinimumDate = term.Start;
+                startDatePicker.MaximumDate = term.End;
+                endDatePicker.MinimumDate = term.Start;
+                endDatePicker.MaximumDate = term.End;
+                dueDatePicker.MinimumDate = term.Start;
+                dueDatePicker.MaximumDate = term.End;
+            }
+            else
+            {
+                startDatePicker.Date = DateTime.Today;
+                endDatePicker.Date = DateTime.Today;
+                dueDatePicker.Date = DateTime.Today;
+            }
+
 
             if (term != null)
             {
@@ -137,6 +147,11 @@ namespace C971_PA.Views
             bool valid = false;
             bool validCourse = false;
             bool validTermCourse = false;
+
+            if (term == null)
+            {
+                return true;
+            }
 
             if (course.Start <= course.End && course.End <= course.DueDate)
             {
