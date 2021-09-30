@@ -17,7 +17,7 @@ namespace C971_PA.Views
     {
         Term term;
         ObservableCollection<Course> coursesInTerm;
-        List<Course> coursesNotInTerm;
+        ObservableCollection<Course> coursesNotInTerm;
         ObservableCollection<Course> coursesToAdd;
         List<Course> coursesToRemove = new List<Course>();
         public TermEditPage(Term term)
@@ -35,7 +35,7 @@ namespace C971_PA.Views
             this.coursesInTerm = await App.DataBase.GetCoursesInTermAsync(this.term);
             termCoursesCollectionView.ItemsSource = coursesInTerm;
 
-            this.coursesNotInTerm = await App.DataBase.GetCoursesNotInATermAsync();
+            this.coursesNotInTerm = new ObservableCollection<Course>(await App.DataBase.GetCoursesNotInATermAsync());
             addCoursePicker.ItemsSource = coursesNotInTerm;
 
             this.coursesToAdd = new ObservableCollection<Course>();
@@ -52,11 +52,14 @@ namespace C971_PA.Views
         }
         public async void OnCoursePickerSelected(object sender, EventArgs args)
         {
-            coursesInTerm.Add((Course)addCoursePicker.SelectedItem);
-            coursesToAdd.Add((Course)addCoursePicker.SelectedItem);
-            coursesNotInTerm.Remove((Course)addCoursePicker.SelectedItem);
-            addCoursePicker.SelectedItem = null;
-            saveButton.IsEnabled = true;
+            if (addCoursePicker.SelectedItem != null)
+            {
+                coursesInTerm.Add((Course)addCoursePicker.SelectedItem);
+                coursesToAdd.Add((Course)addCoursePicker.SelectedItem);
+                coursesNotInTerm.Remove((Course)addCoursePicker.SelectedItem);
+                addCoursePicker.SelectedItem = null;
+                saveButton.IsEnabled = true;
+            }
         }
 
         public async void OnSaveButtonClicked(object sender, EventArgs args)
