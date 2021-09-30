@@ -17,9 +17,10 @@ namespace C971_PA.Views
     public partial class CourseDetailPage : ContentPage
     {
         int courseKey;
-
+        string nameOfTerm;
         Instructor instructor;
         Course course;
+        Term term;
         public CourseDetailPage(int courseKey)
         {
             InitializeComponent();
@@ -43,7 +44,19 @@ namespace C971_PA.Views
             {
                 shareNotesButton.IsEnabled = true;
             }
-            termName.Text = await App.DataBase.GetTermNameAsync(course.CourseKey);
+            if (course.TermID != null)
+            {
+                int termId = course.TermID ?? default(int);
+                this.term = await App.DataBase.GetTermAsync(termId);
+            }
+            if (term != null)
+            {
+                termName.Text = term.Name;
+            }
+            else
+            {
+                termName.Text = "Unassigned";
+            }
         }
 
         public async void OnEditClicked(object sender, EventArgs args)
