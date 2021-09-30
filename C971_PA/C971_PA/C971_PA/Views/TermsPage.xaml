@@ -13,6 +13,26 @@
     <ListView x:Name="termsListView"
                     SelectionMode="Single"                  
                     ItemSelected="OnItemSelected">
+
+        <ListView.Header>
+            <Grid>
+                <Label Text="Term Name"
+                       FontAttributes="Bold"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+                <Label Text="Term Start"
+                       FontAttributes="Bold"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                <Label Text="Term End"
+                       FontAttributes="Bold"
+                       Grid.Column="2"
+                       Grid.Row="0"/>
+            </Grid>
+        </ListView.Header>
+        
+        
+        
         
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -22,10 +42,10 @@
                             <Label Text="{Binding Name}"
                                    Grid.Column="0"
                                    Grid.Row="0"/>
-                            <Label Text="{Binding Start}"
+                            <Label Text="{Binding Start, StringFormat='{0:MM/dd/yyyy}'}"
                                    Grid.Column="1"
                                    Grid.Row="0"/>
-                            <Label Text="{Binding End}"
+                            <Label Text="{Binding End, StringFormat='{0:MM/dd/yyyy}'}"
                                    Grid.Column="2"
                                    Grid.Row="0"/>
                         </Grid>
